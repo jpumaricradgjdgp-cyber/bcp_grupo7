@@ -1,0 +1,55 @@
+@model string
+@{
+    var rapidos = new Dictionary<string, (string Url, string Icono, string Titulo, string Nota)>
+    {
+        ["loan"] = ("/prestamos/capital-de-trabajo", "loan", "Simular un préstamo", "Calcula tu cuota mensual"),
+        ["pos"] = ("/negocios/pos", "pos", "Cobrar con POS", "Explora la orientación comercial"),
+        ["savings"] = ("/productos/ahorros", "savings", "Ver cuentas de ahorro", "Conoce sus usos principales"),
+        ["bank"] = ("/banca", "lock", "Banca de prueba", "Transfiere y revisa constancias")
+    };
+    var datos = Model switch
+    {
+        "products" => ("PRODUCTOS", "Elige un producto", "Consulta opciones para financiar tu negocio u organizar tu ahorro.", new[] { "loan", "savings" }, Array.Empty<(string, string)>(), "productos"),
+        "business" => ("SOLUCIONES PARA NEGOCIOS", "Organiza tu próximo paso", "Explora alternativas de financiamiento y cobro para pequeños negocios.", new[] { "loan", "pos" }, Array.Empty<(string, string)>(), "negocios"),
+        "savings" => ("PRODUCTOS", "Cuentas de ahorro", "Una cuenta permite separar dinero, consultar el saldo y seguir los movimientos.", Array.Empty<string>(), new[] {
+            ("Organiza tus ahorros", "Distingue los gastos del día a día del dinero reservado para una meta o para el negocio."),
+            ("Qué puedes comparar", "Antes de elegir una cuenta, revisa sus condiciones, costos y canales de consulta. Esta sección muestra un ejemplo informativo.") }, "productos"),
+        "opening" => ("PRODUCTOS", "Abrir cuenta", "Conoce el recorrido de apertura en esta demostración académica.", new[] { "savings" }, new[] {
+            ("Elige una cuenta", "Revisa el propósito de la cuenta y decide cómo separar tus ahorros de los gastos del negocio."),
+            ("Revisa las condiciones", "La apertura de ejemplo es informativa. Para practicar operaciones puedes entrar a la banca de prueba.") }, "productos"),
+        "benefits" => ("BENEFICIOS", "Beneficios de los canales digitales", "Explora qué tareas puedes resolver en la demo.", new[] { "loan", "bank" }, new[] {
+            ("Organizar el financiamiento", "Compara cuotas referenciales cambiando el monto y el plazo."),
+            ("Seguir tus operaciones", "En la banca de prueba puedes buscar envíos, revisar estados y consultar constancias.") }, "beneficios"),
+        _ => ("PROYECTO ACADÉMICO", "Información del prototipo", "Laboratorio BCP · Grupo 7 · Planeamiento Estratégico de las TIC.", new[] { "bank" }, new[] {
+            ("Propósito", "Demostrar el flujo priorizado del PESI: consulta, transferencia, constancia, reintento sin duplicar el cargo y recuperación tras reinicio."),
+            ("Arquitectura del MVP", "ASP.NET Core MVC con vistas Razor, servicios de casos de uso y Entity Framework Core sobre SQLite. Es una implementación local; la arquitectura en Azure es la propuesta To-Be del PESI."),
+            ("Alcance y límites", "Perfiles, cuentas y contactos ficticios. No se conecta con sistemas del banco. Las fotografías e ilustraciones son recursos gráficos generados.") }, "ayuda")
+    };
+    var (etiqueta, titulo, subtitulo, tarjetas, secciones, seccion) = datos;
+    ViewData["Title"] = titulo;
+    ViewData["Seccion"] = seccion;
+}
+<div class="wrap interior">
+    <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol><li><a href="/">Inicio</a></li><li><span aria-current="page">@titulo</span></li></ol></nav>
+    <div class="page-intro"><span class="eyebrow">@etiqueta</span><h1 tabindex="-1">@titulo</h1><p class="lead">@subtitulo</p></div>
+    @if (tarjetas.Length > 0)
+    {
+        <div class="info-cards">
+            @foreach (var k in tarjetas)
+            {
+                var r = rapidos[k];
+                <a class="quick-card" href="@r.Url"><span class="quick-icon">@Iconos.Svg(r.Icono, 30)</span><strong>@r.Titulo</strong><small>@r.Nota</small></a>
+            }
+        </div>
+    }
+    @if (secciones.Length > 0)
+    {
+        <div class="info-grid">
+            @foreach (var (t, s) in secciones)
+            {
+                <section class="panel"><h2>@t</h2><p>@s</p></section>
+            }
+        </div>
+    }
+    <div class="actions"><a class="btn secondary" href="/">Volver al inicio</a></div>
+</div>

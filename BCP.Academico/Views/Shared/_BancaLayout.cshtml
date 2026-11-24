@@ -1,0 +1,29 @@
+@{
+    Layout = "_Layout";
+    ViewData["Seccion"] = "banca";
+    var menu = ViewData["Menu"] as string ?? "";
+    string? Actual(string clave) => clave == menu ? "page" : null;
+}
+<div class="bank-backdrop">
+    <div class="wrap bank-layout">
+        <aside class="bank-side">
+            <div class="bank-side-title"><span class="bcp-wordmark" aria-hidden="true"></span><div><strong>Mi banca</strong><small>Proyecto académico</small></div></div>
+            <nav aria-label="Operaciones de prueba">
+                <a href="/banca" aria-current="@Actual("inicio")">@Iconos.Svg("shop", 19)Inicio de banca</a>
+                <a href="/banca/enviar" aria-current="@Actual("enviar")">@Iconos.Svg("loan", 19)Transferir y Yapear</a>
+                <a href="/banca/historial" aria-current="@Actual("historial")">@Iconos.Svg("card", 19)Historial y constancias</a>
+                <a href="/banca/perfil" aria-current="@Actual("perfil")">@Iconos.Svg("user", 19)Perfil y seguridad</a>
+                <a href="/continuidad" aria-current="@Actual("continuidad")">@Iconos.Svg("shield", 19)Continuidad (práctica)</a>
+            </nav>
+            <p class="bank-who">@Iconos.Svg("user", 16) <span>@User.Identity?.Name</span></p>
+            <form method="post" action="/acceso/salir" class="bank-logout" asp-antiforgery="true">
+                <button type="submit" class="btn secondary">Cerrar sesión</button>
+            </form>
+            <a class="bank-portal" href="/">Volver al portal</a>
+        </aside>
+        <div class="bank-content">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+@section Scripts { @await RenderSectionAsync("Scripts", required: false) }

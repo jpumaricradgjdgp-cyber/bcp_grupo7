@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Acceso denegado";
+}
+<div class="wrap interior">
+    <section class="success estado-denegado" data-testid="denegado">
+        <div class="success-icon alerta">@Iconos.Svg("lock", 32)</div>
+        <div>
+            <span class="demo-tag">@Iconos.Svg("info", 16) Entorno académico</span>
+            <h1 tabindex="-1">No tienes acceso a esta información</h1>
+            <p>La cuenta o constancia solicitada pertenece a otro perfil. El intento quedó registrado en la bitácora (código 403).</p>
+        </div>
+    </section>
+    <div class="actions"><a class="btn primary" href="/banca">Volver a mi banca</a><a class="btn secondary" href="/">Ir al inicio</a></div>
+</div>

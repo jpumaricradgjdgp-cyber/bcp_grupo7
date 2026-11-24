@@ -1,0 +1,109 @@
+@model ContinuidadViewModel
+@{
+    Layout = "_BancaLayout";
+    ViewData["Title"] = "Continuidad (práctica)";
+    ViewData["Menu"] = "continuidad";
+    ViewData["Pagina"] = "continuidad";
+    var escenarios = new[]
+    {
+        (Escenario.Normal, "Operación normal", "Débito y abono en la misma transacción."),
+        (Escenario.FallaAntesDeGuardar, "Falla antes de guardar", "Se revierte la transacción: sin cargos ni abonos parciales."),
+        (Escenario.RespuestaPerdida, "Respuesta perdida después de guardar", "La operación queda guardada; el cliente recupera la referencia reintentando con la misma clave."),
+        (Escenario.ResultadoDesconocido, "Resultado externo desconocido", "El canal no confirma ni rechaza: queda En verificación hasta conciliar.")
+    };
+}
+<div class="bank-heading"><div><span class="eyebrow">ENTORNO DE PRÁCTICA</span><h1 tabindex="-1">Panel académico de continuidad</h1>
+    <p class="lead">Activa escenarios controlados y revisa referencia, estado, evento y resultado de cada operación.</p></div>
+    <span class="bank-available"><small>Saldo de tu cuenta</small><strong data-testid="saldo-continuidad">@Dinero.Soles(Model.SaldoCentimos)</strong></span></div>
+
+<partial name="_Mensajes" model="@((Model.Mensaje, "info"))" />
+
+<div class="kpis" aria-label="Resumen de operaciones">
+    <div class="kpi"><small>Confirmadas</small><strong>@Model.Confirmadas</strong></div>
+    <div class="kpi"><small>En verificación</small><strong>@Model.EnVerificacion</strong></div>
+    <div class="kpi"><small>Extornadas</small><strong>@Model.Extornadas</strong></div>
+    <div class="kpi"><small>Duplicados evitados</small><strong data-testid="duplicados">@Model.DuplicadosEvitados</strong></div>
+    <div class="kpi"><small>Último arranque del servicio</small><strong class="kpi-fecha">@(Model.UltimoInicioServicioUtc is DateTime d ? Dinero.FechaHoraSegundos(d) : "—")</strong></div>
+</div>
+
+<div class="grid cont-grid">
+    <section class="panel">
+        <h2>@Iconos.Svg("shield", 21) Escenario para la siguiente operación nueva</h2>
+        <p class="hint">Escenario armado ahora: <strong data-testid="escenario-armado">@Model.EscenarioArmado</strong>. Los reintentos con una clave existente no consumen el escenario.</p>
+        <form method="post" action="/continuidad/escenario" asp-antiforgery="true">
+            <fieldset class="choices"><legend class="sr-only">Escenario</legend>
+                @foreach (var (valor, nombre, nota) in escenarios)
+                {
+                    <label class="escenario"><input type="radio" name="escenario" value="@valor" checked="@(Model.EscenarioArmadoClave == valor.ToString())">
+                        <span><strong>@nombre</strong><small>@nota</small></span></label>
+                }
+            </fieldset>
+            <div class="actions"><button class="btn primary" type="submit">Armar escenario</button></div>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>@Iconos.Svg("refresh", 21) Reintento concurrente</h2>
+        <p class="hint">Envía 10 solicitudes simultáneas con la <strong>misma clave</strong> y los mismos datos (S/ 10.00 a @Model.ContactoPruebaNombre por BCP). El servidor y la restricción única de SQLite deben devolver una sola referencia.</p>
+        <form id="form-concurrente" asp-antiforgery="true" method="post" action="/banca/enviar/confirmar" data-contacto="@Model.ContactoPruebaId">
+            <button class="btn primary" type="submit" data-testid="btn-concurrente">Enviar 10 solicitudes a la vez</button>
+        </form>
+        <ol id="resultado-concurrente" class="resultado-concurrente" aria-live="polite"></ol>
+    </section>
+</div>
+
+<section class="panel bank-log">
+    <div class="bank-log-head"><h2>Operaciones de la demostración</h2><a href="/continuidad">Actualizar</a></div>
+    @if (Model.Operaciones.Count == 0)
+    {
+        <p class="bank-empty">Aún no hay operaciones nuevas en esta base de práctica.</p>
+    }
+    else
+    {
+        <div class="tabla-scroll"><table class="tabla" data-testid="tabla-operaciones">
+            <thead><tr><th scope="col">Referencia</th><th scope="col">Importe</th><th scope="col">Estado</th><th scope="col">Asientos</th><th scope="col">Último evento</th><th scope="col">Resultado</th><th scope="col">Conciliar</th></tr></thead>
+            <tbody>
+            @foreach (var o in Model.Operaciones)
+            {
+                <tr>
+                    <td><a href="/banca/constancia/@o.Referencia">@o.Referencia</a><small class="sub">@o.Canal</small></td>
+                    <td>@Dinero.Soles(o.ImporteCentimos)</td>
+                    <td><partial name="_EstadoOperacion" model="o.Estado" /></td>
+                    <td><small>@o.Debitos débito · @o.Creditos abono · @o.Ajustes ajuste</small></td>
+                    <td>@o.UltimoEvento</td>
+                    <td><small>@o.Resultado</small></td>
+                    <td>
+                        <form method="post" action="/continuidad/conciliar" class="conciliar" asp-antiforgery="true">
+                            <input type="hidden" name="referencia" value="@o.Referencia">
+                            <button class="btn secondary mini" name="resultado" value="Confirmado" type="submit">Confirmación externa</button>
+                            <button class="btn secondary mini" name="resultado" value="Rechazado" type="submit">Rechazo confirmado</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table></div>
+        <p class="hint">Compensar una vez y solo ante rechazo confirmado; nunca por tiempo agotado. Repetir la conciliación no crea un segundo ajuste.</p>
+    }
+</section>
+
+<section class="panel bank-log">
+    <div class="bank-log-head"><h2>Bitácora de eventos</h2><span class="hint">Últimos 40 · hora de Lima</span></div>
+    <div class="tabla-scroll"><table class="tabla bitacora" data-testid="bitacora">
+        <thead><tr><th scope="col">Fecha y hora</th><th scope="col">Referencia</th><th scope="col">Evento</th><th scope="col">Detalle</th><th scope="col">Resultado</th></tr></thead>
+        <tbody>
+        @foreach (var e in Model.Eventos)
+        {
+            <tr><td>@Dinero.FechaHoraSegundos(e.FechaUtc)</td><td>@(e.Referencia ?? "—")</td><td>@e.Tipo</td><td><small>@e.Detalle</small></td><td><small>@e.Resultado</small></td></tr>
+        }
+        </tbody>
+    </table></div>
+</section>
+
+<section class="panel">
+    <h2>Preparar una nueva grabación</h2>
+    <p class="hint">Restablece los saldos iniciales (origen S/ 5,320.00 y destino S/ 420.00), borra las operaciones de práctica y cierra la sesión.</p>
+    <form method="post" action="/continuidad/restablecer" asp-antiforgery="true" data-confirmar="¿Restablecer los datos de la demostración? Se borrarán las operaciones de práctica.">
+        <button class="btn secondary" type="submit">Restablecer datos de la demostración</button>
+    </form>
+</section>

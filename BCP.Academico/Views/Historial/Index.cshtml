@@ -1,0 +1,43 @@
+@model HistorialViewModel
+@{
+    Layout = "_BancaLayout";
+    ViewData["Title"] = "Historial y constancias";
+    ViewData["Menu"] = "historial";
+    ViewData["Pagina"] = "historial";
+}
+<div class="bank-heading"><div><span class="eyebrow">MI BANCA</span><h1 tabindex="-1">Historial y constancias</h1>
+    <p class="lead">Busca una operación por código, destinatario o concepto.</p></div></div>
+
+<form class="panel bank-filter" method="get" action="/banca/historial" id="form-filtro" role="search">
+    <div class="field"><label for="bank-query">Buscar operación</label><input id="bank-query" name="q" type="search" value="@Model.Filtro.Q" placeholder="Ej. LAB-2026-501183"></div>
+    <div class="field"><label for="bank-channel-filter">Canal</label>
+        <select id="bank-channel-filter" name="canal">
+            <option value="">Todos</option>
+            @foreach (var c in new[] { Canales.Bcp, Canales.Yape })
+            {
+                <option selected="@(Model.Filtro.Canal == c)">@c</option>
+            }
+        </select></div>
+    <div class="field"><label for="bank-state-filter">Estado</label>
+        <select id="bank-state-filter" name="estado">
+            <option value="">Todos</option>
+            @foreach (var e in EstadosOperacion.Todos)
+            {
+                <option selected="@(Model.Filtro.Estado == e)">@e</option>
+            }
+        </select></div>
+    <noscript><button class="btn primary" type="submit">Filtrar</button></noscript>
+</form>
+
+<section class="panel bank-log" aria-label="Envíos realizados">
+    <div class="bank-log-head"><h2>Envíos realizados</h2><p id="bank-count" aria-live="polite">@Model.Operaciones.Count operaciones</p></div>
+    <partial name="_ListaMovimientos" model="Model.Operaciones" />
+</section>
+
+@if (Model.Recibidos.Count > 0)
+{
+    <section class="panel bank-log" aria-label="Abonos recibidos">
+        <div class="bank-log-head"><h2>Abonos recibidos</h2></div>
+        <partial name="_ListaMovimientos" model="Model.Recibidos" />
+    </section>
+}

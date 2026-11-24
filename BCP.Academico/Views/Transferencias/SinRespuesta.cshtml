@@ -1,0 +1,33 @@
+@model SinRespuestaViewModel
+@{
+    Layout = "_BancaLayout";
+    ViewData["Title"] = "Sin respuesta del servicio";
+    ViewData["Menu"] = "enviar";
+    var f = Model.Formulario;
+}
+<section class="success estado-espera" data-testid="sin-respuesta">
+    <div class="success-icon alerta">@Iconos.Svg("clock", 32)</div>
+    <div>
+        <span class="demo-tag">@Iconos.Svg("info", 16) Escenario de práctica</span>
+        <h1 tabindex="-1">No recibimos la respuesta de tu envío</h1>
+        <p>Es posible que la operación se haya registrado. <strong>No la repitas como un envío nuevo.</strong>
+            Usa «Reintentar el mismo envío»: conserva la misma clave de operación y, si ya existe, te mostraremos la misma referencia sin un nuevo cargo.</p>
+    </div>
+</section>
+<section class="panel review-panel">
+    <h2>Envío pendiente de respuesta</h2>
+    <partial name="_ResumenEnvio" model="Model.Resumen" />
+    <p class="hint">Clave de operación: <code>@f.ClaveIdempotencia[..8]…</code></p>
+    <div class="actions">
+        <a class="btn secondary" href="/banca/historial">Revisar historial</a>
+        <form method="post" action="/banca/enviar/confirmar" asp-antiforgery="true">
+            <input type="hidden" name="Canal" value="@f.Canal">
+            <input type="hidden" name="ContactoId" value="@f.ContactoId">
+            <input type="hidden" name="Importe" value="@f.Importe">
+            <input type="hidden" name="Concepto" value="@f.Concepto">
+            <input type="hidden" name="ClaveIdempotencia" value="@f.ClaveIdempotencia">
+            <input type="hidden" name="reintento" value="true">
+            <button class="btn primary" type="submit" data-enviando="Reintentando…">@Iconos.Svg("refresh", 19) Reintentar el mismo envío</button>
+        </form>
+    </div>
+</section>

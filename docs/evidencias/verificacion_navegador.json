@@ -1,0 +1,87 @@
+[
+  {
+    "verificacion": "Ingreso con teclado (Enter)",
+    "ok": true,
+    "observado": "http://localhost:5080/banca"
+  },
+  {
+    "verificacion": "Saldo inicial desde SQLite",
+    "ok": true,
+    "observado": "S/ 5,320.00"
+  },
+  {
+    "verificacion": "Foco entra al diálogo al abrir",
+    "ok": true,
+    "observado": "activeElement = #send-title"
+  },
+  {
+    "verificacion": "Escape cierra y devuelve el foco a Continuar",
+    "ok": true,
+    "observado": "#btn-continuar, monto=50"
+  },
+  {
+    "verificacion": "Editar conserva los datos y devuelve el foco",
+    "ok": true,
+    "observado": "#btn-continuar, destino=Elena Rojas"
+  },
+  {
+    "verificacion": "Monto mayor al saldo se rechaza con motivo",
+    "ok": true,
+    "observado": "El monto supera tu saldo disponible. Ingresa un importe menor."
+  },
+  {
+    "verificacion": "Tras cerrar sesión, /banca exige ingresar",
+    "ok": true,
+    "observado": "http://localhost:5080/acceso?ReturnUrl=%2Fbanca"
+  },
+  {
+    "verificacion": "Constancia ajena denegada",
+    "ok": true,
+    "observado": "HTTP 403"
+  },
+  {
+    "verificacion": "Panel muestra S/ 5,320.00",
+    "ok": true,
+    "observado": "S/ 5,320.00"
+  },
+  {
+    "verificacion": "Confirmación: débito y abono de S/ 50.00, saldo S/ 5,270.00",
+    "ok": true,
+    "observado": "LAB-2026-501184 · S/ 5,270.00 · 2 asientos"
+  },
+  {
+    "verificacion": "Reintento: misma referencia, sin segundo débito",
+    "ok": true,
+    "observado": "LAB-2026-501184 · S/ 5,270.00 · 2 asientos"
+  },
+  {
+    "verificacion": "10 solicitudes simultáneas → una referencia",
+    "ok": true,
+    "observado": "Una sola referencia: LAB-2026-501185 · registradas: 1, reintentos resueltos: 9"
+  },
+  {
+    "verificacion": "Resultado desconocido queda En verificación (cargo sin abono)",
+    "ok": true,
+    "observado": "LAB-2026-501186 · En verificación · 1 asiento"
+  },
+  {
+    "verificacion": "Rechazo confirmado ×2 → un único ajuste; saldo vuelve a S/ 5,260.00",
+    "ok": true,
+    "observado": "LAB-2026-501186 · LAB-2026-501186 Yape S/ 20.00 Extornada 1 débito · 0 abono · 1 ajuste Conciliación sin cam · S/ 5,260.00"
+  },
+  {
+    "verificacion": "Tras reiniciar, el saldo sigue en S/ 5,260.00 (50 + 10 de la prueba concurrente)",
+    "ok": true,
+    "observado": "S/ 5,260.00"
+  },
+  {
+    "verificacion": "Tras reiniciar, la constancia sigue disponible",
+    "ok": true,
+    "observado": "LAB-2026-501184 · Confirmada"
+  },
+  {
+    "verificacion": "Bitácora registra el arranque con las operaciones confirmadas",
+    "ok": true,
+    "observado": "24/11/2026 08:43:16 — Servicio iniciado Base SQLite abierta. Confirmadas: 4; en verificación: 0; última referencia: LAB-"
+  }
+]

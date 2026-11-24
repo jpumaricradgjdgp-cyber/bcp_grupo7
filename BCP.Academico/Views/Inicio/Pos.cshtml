@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "POS para negocios";
+    ViewData["Seccion"] = "negocios";
+    ViewData["Pagina"] = "pos";
+}
+<div class="wrap interior" data-flujo="pos">
+    <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol><li><a href="/">Inicio</a></li><li><a href="/negocios">Soluciones para negocios</a></li><li><span aria-current="page">POS</span></li></ol></nav>
+    <div class="grid product-hero" data-etapa="intro">
+        <div class="product-copy"><div class="page-intro"><span class="eyebrow">SOLUCIONES PARA NEGOCIOS</span><h1 tabindex="-1">Cobra con POS</h1>
+            <p class="lead">Acepta pagos con tarjeta en el punto de venta y simplifica el cobro a tus clientes.</p></div>
+            <ul class="check-list"><li>@Iconos.Svg("check", 19) Pago con tarjeta o sin contacto</li><li>@Iconos.Svg("check", 19) Registro de cada cobro para tu control</li></ul>
+            <button class="btn primary" type="button" data-ir="form">Solicitar orientación</button></div>
+        <figure class="product-photo"><img src="~/img/pos.webp" alt="Recurso gráfico: terminal POS de demostración en el mostrador de una cafetería" width="1200" height="800"></figure>
+    </div>
+    <form class="panel form-panel" id="pos-form" novalidate autocomplete="off" data-etapa="form" hidden>
+        <span class="demo-tag">@Iconos.Svg("info", 16) Entorno académico</span>
+        <h1 tabindex="-1">Identificación del comercio</h1>
+        <div class="field"><label for="doc-type">Tipo de documento</label><select id="doc-type"><option value="DNI">DNI</option><option value="CE">Carné de extranjería</option></select></div>
+        <div class="field"><label for="doc-number">Número de documento</label><input id="doc-number" type="text" inputmode="numeric" maxlength="12" aria-describedby="doc-hint doc-error" required>
+            <p class="hint" id="doc-hint">8 dígitos seguidos. Usa el ejemplo ficticio 00018427.</p>
+            <p class="field-error" role="alert" id="doc-error" hidden>@Iconos.Svg("alert", 19) <span></span></p></div>
+        <div class="actions"><button class="btn secondary" type="button" data-ir="intro">Volver a POS</button><button class="btn primary" type="submit">Continuar a revisión</button></div>
+    </form>
+    <section class="panel form-panel" data-etapa="revision" hidden>
+        <span class="demo-tag">@Iconos.Svg("info", 16) Entorno académico</span><h1 tabindex="-1">Revisa los datos</h1>
+        <dl class="detail-list"><div><dt>Tipo de documento</dt><dd data-pos-tipo></dd></div><div><dt>Número de documento</dt><dd data-pos-numero></dd></div></dl>
+        <div class="actions"><button class="btn secondary" type="button" data-ir="form">Editar datos</button><button class="btn primary" type="button" data-ir="hecho">Confirmar orientación</button></div>
+    </section>
+    <div data-etapa="hecho" hidden>
+        <section class="success"><div class="success-icon">@Iconos.Svg("check", 32)</div><div><span class="demo-tag">@Iconos.Svg("info", 16) Entorno académico</span><h1 tabindex="-1">Solicitud revisada</h1><p>Los datos de tu solicitud de orientación POS quedaron revisados en este entorno.</p></div></section>
+        <div class="actions"><button class="btn secondary" type="button" data-ir="intro">Volver a POS</button><a class="btn secondary" href="/">Volver al inicio</a></div>
+    </div>
+</div>

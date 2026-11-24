@@ -1,0 +1,9 @@
+bin/
+obj/
+App_Data/
+video/_crudo/
+video/_diapositivas/
+video/_grabacion.log
+*.db
+*.db-*
+TestResults/

@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#102747"/></marker>
+    <marker id="fo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff8a24"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="#ffffff"/>
+  <text x="60" y="70" font-size="40" font-weight="700" fill="#102747">Arquitectura MVC implementada en el MVP local</text>
+  <text x="60" y="108" font-size="22" fill="#4b617b">ASP.NET Core MVC (.NET 10) · Razor · Entity Framework Core · SQLite · un solo servidor en http://localhost:5080</text>
+
+  <!-- Navegador -->
+  <rect x="60" y="160" width="300" height="580" rx="22" fill="#eaf5ff" stroke="#1451a7" stroke-width="2"/>
+  <text x="210" y="200" text-anchor="middle" font-size="24" font-weight="700" fill="#102747">Navegador</text>
+  <text x="210" y="228" text-anchor="middle" font-size="17" fill="#4b617b">HTML · CSS · JavaScript</text>
+  <rect x="90" y="260" width="240" height="96" rx="14" fill="#fff" stroke="#d3deeb"/>
+  <text x="210" y="298" text-anchor="middle" font-size="19" font-weight="650" fill="#102747">Vista Razor</text>
+  <text x="210" y="324" text-anchor="middle" font-size="16" fill="#4b617b">Transferencias/Nueva.cshtml</text>
+  <rect x="90" y="378" width="240" height="96" rx="14" fill="#fff" stroke="#d3deeb"/>
+  <text x="210" y="416" text-anchor="middle" font-size="19" font-weight="650" fill="#102747">Diálogo «Revisa tu envío»</text>
+  <text x="210" y="442" text-anchor="middle" font-size="16" fill="#4b617b">clave de idempotencia oculta</text>
+  <rect x="90" y="496" width="240" height="96" rx="14" fill="#fff" stroke="#d3deeb"/>
+  <text x="210" y="534" text-anchor="middle" font-size="19" font-weight="650" fill="#102747">Constancia</text>
+  <text x="210" y="560" text-anchor="middle" font-size="16" fill="#4b617b">Historial/Constancia.cshtml</text>
+  <text x="210" y="630" text-anchor="middle" font-size="15" fill="#4b617b">Cookie de sesión + token</text>
+  <text x="210" y="652" text-anchor="middle" font-size="15" fill="#4b617b">antifalsificación en cada POST</text>
+  <text x="210" y="690" text-anchor="middle" font-size="15" fill="#4b617b">localStorage: solo preferencias</text>
+
+  <!-- Controladores -->
+  <rect x="430" y="160" width="330" height="580" rx="22" fill="#fff" stroke="#102747" stroke-width="2"/>
+  <text x="595" y="200" text-anchor="middle" font-size="24" font-weight="700" fill="#102747">Controladores</text>
+  <text x="595" y="228" text-anchor="middle" font-size="17" fill="#4b617b">HTTP · sesión · forma de los datos</text>
+  <g font-size="18" fill="#102747">
+    <rect x="460" y="252" width="270" height="52" rx="12" fill="#fff3e6" stroke="#ff8a24" stroke-width="2"/><text x="595" y="285" text-anchor="middle" font-weight="650">TransferenciasController</text>
+    <rect x="460" y="316" width="270" height="44" rx="12" fill="#f7fafd" stroke="#d3deeb"/><text x="595" y="345" text-anchor="middle">AccesoController</text>
+    <rect x="460" y="370" width="270" height="44" rx="12" fill="#f7fafd" stroke="#d3deeb"/><text x="595" y="399" text-anchor="middle">CuentasController</text>
+    <rect x="460" y="424" width="270" height="44" rx="12" fill="#f7fafd" stroke="#d3deeb"/><text x="595" y="453" text-anchor="middle">HistorialController</text>
+    <rect x="460" y="478" width="270" height="44" rx="12" fill="#f7fafd" stroke="#d3deeb"/><text x="595" y="507" text-anchor="middle">ContinuidadController</text>
+    <rect x="460" y="532" width="270" height="44" rx="12" fill="#f7fafd" stroke="#d3deeb"/><text x="595" y="561" text-anchor="middle">InicioController</text>
+  </g>
+  <text x="595" y="622" text-anchor="middle" font-size="15" fill="#4b617b">[Authorize] · 403 si el recurso es de otro perfil</text>
+  <text x="595" y="646" text-anchor="middle" font-size="15" fill="#4b617b">ViewModels: solo los campos que la vista necesita</text>
+
+  <!-- Servicios -->
+  <rect x="830" y="160" width="340" height="580" rx="22" fill="#fff" stroke="#102747" stroke-width="2"/>
+  <text x="1000" y="200" text-anchor="middle" font-size="24" font-weight="700" fill="#102747">Servicios (casos de uso)</text>
+  <text x="1000" y="228" text-anchor="middle" font-size="17" fill="#4b617b">reglas de negocio y transacciones</text>
+  <g font-size="18" fill="#102747">
+    <rect x="860" y="252" width="280" height="76" rx="12" fill="#fff3e6" stroke="#ff8a24" stroke-width="2"/><text x="1000" y="284" text-anchor="middle" font-weight="650">ServicioTransferencias</text>
+    <text x="1000" y="310" text-anchor="middle" font-size="15" fill="#4b617b">fondos · clave única · débito+abono</text>
+    <rect x="860" y="340" width="280" height="44" rx="12" fill="#f7fafd" stroke="#d3deeb"/><text x="1000" y="369" text-anchor="middle">ServicioConciliacion</text>
+    <rect x="860" y="394" width="280" height="44" rx="12" fill="#f7fafd" stroke="#d3deeb"/><text x="1000" y="423" text-anchor="middle">ServicioCuentas</text>
+    <rect x="860" y="448" width="280" height="44" rx="12" fill="#f7fafd" stroke="#d3deeb"/><text x="1000" y="477" text-anchor="middle">ServicioAcceso · Auditoría</text>
+    <rect x="860" y="502" width="280" height="64" rx="12" fill="#f7fafd" stroke="#d3deeb"/><text x="1000" y="530" text-anchor="middle">Adaptadores BCP / Yape</text>
+    <text x="1000" y="553" text-anchor="middle" font-size="15" fill="#4b617b">canal académico local</text>
+  </g>
+  <text x="1000" y="622" text-anchor="middle" font-size="15" fill="#4b617b">Escenarios de continuidad (práctica):</text>
+  <text x="1000" y="646" text-anchor="middle" font-size="15" fill="#4b617b">falla previa · respuesta perdida · resultado desconocido</text>
+
+  <!-- Persistencia -->
+  <rect x="1240" y="160" width="300" height="580" rx="22" fill="#102747"/>
+  <text x="1390" y="200" text-anchor="middle" font-size="24" font-weight="700" fill="#fff">Modelo y datos</text>
+  <text x="1390" y="228" text-anchor="middle" font-size="17" fill="#c9dcf2">EF Core · AppDbContext</text>
+  <g font-size="17" fill="#fff">
+    <text x="1275" y="280">Cliente · Cuenta · Contacto</text>
+    <text x="1275" y="312">Transferencia</text>
+    <text x="1275" y="344">Movimiento</text>
+    <text x="1275" y="376">EventoAuditoria</text>
+  </g>
+  <path d="M1300 420c0-14 40-24 90-24s90 10 90 24v120c0 14-40 24-90 24s-90-10-90-24z" fill="#1451a7" stroke="#c9dcf2" stroke-width="2"/>
+  <ellipse cx="1390" cy="420" rx="90" ry="24" fill="#2a66bd" stroke="#c9dcf2" stroke-width="2"/>
+  <text x="1390" y="492" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">SQLite</text>
+  <text x="1390" y="518" text-anchor="middle" font-size="15" fill="#c9dcf2">bcp_academico.db</text>
+  <g font-size="15" fill="#c9dcf2">
+    <text x="1275" y="610">• Importes en céntimos enteros</text>
+    <text x="1275" y="636">• UNIQUE (cliente, clave)</text>
+    <text x="1275" y="662">• UNIQUE (operación, cuenta, tipo)</text>
+    <text x="1275" y="688">• BEGIN IMMEDIATE + WAL</text>
+    <text x="1275" y="714">• Migraciones y datos iniciales</text>
+  </g>
+
+  <!-- Flechas: camino de un envío -->
+  <path d="M330 420 C 390 420, 400 278, 455 278" fill="none" stroke="#ff8a24" stroke-width="4" marker-end="url(#fo)"/>
+  <path d="M730 278 L 855 288" fill="none" stroke="#ff8a24" stroke-width="4" marker-end="url(#fo)"/>
+  <path d="M1140 290 C 1190 290, 1200 300, 1235 300" fill="none" stroke="#ff8a24" stroke-width="4" marker-end="url(#fo)"/>
+
+  <rect x="60" y="770" width="1480" height="96" rx="18" fill="#fff3e6" stroke="#ff8a24"/>
+  <text x="90" y="808" font-size="21" font-weight="700" fill="#102747">Camino de un envío:</text>
+  <text x="90" y="842" font-size="17.5" fill="#263d58">Vista Razor → POST /banca/enviar/confirmar → TransferenciasController → ServicioTransferencias → AppDbContext + SQLite (una transacción) → redirección (PRG) → vista de constancia</text>
+</svg>

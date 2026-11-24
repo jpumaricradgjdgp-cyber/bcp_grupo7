@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Capital de trabajo";
+    ViewData["Seccion"] = "productos";
+    ViewData["Pagina"] = "prestamo";
+}
+<div class="wrap interior" data-flujo="prestamo">
+    <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol><li><a href="/">Inicio</a></li><li><a href="/productos">Préstamos</a></li><li><span aria-current="page">Capital de trabajo</span></li></ol></nav>
+    <div class="page-intro"><span class="eyebrow">PRÉSTAMOS</span><h1 tabindex="-1" data-titulo-etapa>Capital de trabajo</h1>
+        <p class="lead">Elige cuánto necesitas y en cuántos meses te gustaría pagarlo.</p></div>
+    <ol class="stepper" aria-label="Progreso" data-stepper><li aria-current="step"><span aria-hidden="true">1</span>Simular</li><li><span aria-hidden="true">2</span>Revisar</li><li><span aria-hidden="true">3</span>Resultado</li></ol>
+
+    <div class="grid flow-grid" data-etapa="simular">
+        <section class="panel flow-main" aria-labelledby="configure-title">
+            <h2 id="configure-title">Configura tu préstamo</h2>
+            <fieldset class="choices"><legend>Monto</legend><div class="choice-grid">
+                @foreach (var m in new[] { 3000, 5000, 10000 })
+                {
+                    <label class="choice"><input type="radio" name="monto" value="@m" checked="@(m == 5000)"><span>S/ @m.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</span></label>
+                }
+            </div></fieldset>
+            <fieldset class="choices"><legend>Plazo</legend><div class="choice-grid">
+                @foreach (var p in new[] { 6, 12, 18 })
+                {
+                    <label class="choice"><input type="radio" name="plazo" value="@p" checked="@(p == 12)"><span>@p meses</span></label>
+                }
+            </div></fieldset>
+            <button class="btn primary" type="button" data-ir="revisar">Solicitar préstamo</button>
+        </section>
+        <aside class="panel quote flow-side" aria-label="Resumen del préstamo">
+            <div aria-live="polite" aria-atomic="true" data-cotizacion></div>
+            <p class="small-text">Tasa ilustrativa de 1,25 % mensual, sin comisiones. Valores de ejemplo.</p>
+        </aside>
+    </div>
+    <section class="panel quote review-panel" data-etapa="revisar" hidden>
+        <div data-cotizacion></div>
+        <div class="actions"><button class="btn secondary" type="button" data-ir="simular">Ajustar monto y plazo</button><button class="btn primary" type="button" data-ir="resultado">Confirmar cálculo</button></div>
+    </section>
+    <div data-etapa="resultado" hidden>
+        <section class="success"><div class="success-icon">@Iconos.Svg("check", 32)</div><div><span class="demo-tag">@Iconos.Svg("info", 16) Entorno académico</span><h2>Tu cálculo está listo</h2><p data-resultado-texto></p></div></section>
+        <div class="actions"><button class="btn secondary" type="button" data-ir="simular">Ajustar monto y plazo</button><a class="btn secondary" href="/">Volver al inicio</a></div>
+    </div>
+</div>

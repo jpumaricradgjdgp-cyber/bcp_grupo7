@@ -1,0 +1,72 @@
+[
+  {
+    "nombre": "P01 Consulta y acceso (R2): cada perfil ve sus datos y se deniega la constancia y la cuenta ajena",
+    "resultado": "Passed",
+    "duracion": "00:00:00.5042417",
+    "inicio": "2026-11-24T08:45:01.6281070-05:00",
+    "salida": "Mariana ve S/ 5,320.00 y •••• 2048; Elena ve S/ 420.00; constancia y cuenta ajenas → 403 registrados en bitácora."
+  },
+  {
+    "nombre": "P02 Transferencia válida (R1): S/ 50.00 deja 5,270.00 y 470.00 con un débito, un abono y una referencia",
+    "resultado": "Passed",
+    "duracion": "00:00:00.4941074",
+    "inicio": "2026-11-24T08:45:02.1321358-05:00",
+    "salida": "LAB-2026-501184 Confirmada · Mariana 5,320.00 → 5,270.00 · Elena 420.00 → 470.00 · 1 débito + 1 abono."
+  },
+  {
+    "nombre": "P03 Validación de saldo: un importe mayor al disponible se rechaza y los saldos no cambian",
+    "resultado": "Passed",
+    "duracion": "00:00:03.8899853",
+    "inicio": "2026-11-24T08:44:55.3305269-05:00",
+    "salida": "S/ 6,000 > S/ 5,320 → 422 con mensaje; monto negativo y contacto ajeno → 422; saldos y operaciones sin cambios."
+  },
+  {
+    "nombre": "P04 Reintento concurrente (R1): 10 envíos con la misma clave generan una sola operación y la misma referencia",
+    "resultado": "Passed",
+    "duracion": "00:00:01.0047858",
+    "inicio": "2026-11-24T08:44:59.7914823-05:00",
+    "salida": "Reintento, Reintento, Registrada, Reintento, Reintento, Reintento, Reintento, Reintento, Reintento, Reintento\r\n1 Registrada + 9 Reintento → LAB-2026-501184; 1 débito; saldo 5,270.00; conflicto de clave → 409 sin afectar fondos."
+  },
+  {
+    "nombre": "P05 Pérdida de respuesta (R3): la operación guardada se recupera con la misma clave y desde el historial",
+    "resultado": "Passed",
+    "duracion": "00:00:00.4317384",
+    "inicio": "2026-11-24T08:45:04.0131734-05:00",
+    "salida": "Respuesta 504 sin referencia → historial muestra LAB-2026-501184 → reintento devuelve la misma referencia; un solo cargo."
+  },
+  {
+    "nombre": "P06 Falla antes de confirmar (R3): no quedan cargos ni abonos parciales",
+    "resultado": "Passed",
+    "duracion": "00:00:00.5497075",
+    "inicio": "2026-11-24T08:44:59.2667795-05:00",
+    "salida": "503 con saldos 5,320.00 / 420.00 intactos, 0 operaciones nuevas, evento registrado; el reintento posterior registra una sola vez."
+  },
+  {
+    "nombre": "P07 Rechazo y compensación (R1/R3): un único ajuste vinculado al cargo aunque se concilie dos veces",
+    "resultado": "Passed",
+    "duracion": "00:00:00.6720990",
+    "inicio": "2026-11-24T08:45:02.6271312-05:00",
+    "salida": "LAB-2026-501184: En verificación (cargo, sin abono) → rechazo confirmado ×2 → Extornada con 1 débito + 1 ajuste; saldo vuelve a 5,320.00."
+  },
+  {
+    "nombre": "P08 Persistencia (R3): tras reiniciar el servidor se conservan saldo, historial y constancia",
+    "resultado": "Passed",
+    "duracion": "00:00:00.8307152",
+    "inicio": "2026-11-24T08:45:00.7958647-05:00",
+    "salida": "Reinicio: LAB-2026-501184 y saldo S/ 5,270.00 recuperados desde el mismo archivo SQLite (2 eventos de arranque)."
+  },
+  {
+    "nombre": "P09 Cierre de sesión y antifalsificación: la cookie anterior deja de servir y un POST sin token se rechaza",
+    "resultado": "Passed",
+    "duracion": "00:00:00.3763817",
+    "inicio": "2026-11-24T08:45:03.6361359-05:00",
+    "salida": "POST sin token → 400 sin cambios; tras cerrar sesión /banca redirige a /acceso."
+  },
+  {
+    "nombre": "P10 Sello de sesión: una cookie copiada antes del cierre de sesión ya no da acceso",
+    "resultado": "Passed",
+    "duracion": "00:00:00.3350970",
+    "inicio": "2026-11-24T08:45:03.3001651-05:00",
+    "salida": "La cookie emitida antes del cierre de sesión es rechazada (sello rotado en SQLite)."
+  }
+]

@@ -1,0 +1,12 @@
+@model TarjetaSaldoViewModel
+<section class="bank-balance" aria-labelledby="saldo-titulo">
+    <div>
+        <p id="saldo-titulo">@Model.Tipo · Soles (@Model.Moneda)</p>
+        <strong id="balance-value" data-saldo="@Dinero.Soles(Model.SaldoCentimos)" data-testid="saldo">@Dinero.Soles(Model.SaldoCentimos)</strong>
+        <small>Saldo disponible</small>
+    </div>
+    <div class="bank-balance-tools">
+        <button class="btn secondary" type="button" data-ocultar-saldo aria-controls="balance-value">Ocultar saldo</button>
+        <span>Cuenta <span data-testid="cuenta">@Model.CuentaEnmascarada</span></span>
+    </div>
+</section>

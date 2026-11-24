@@ -1,0 +1,83 @@
+@model EnvioViewModel
+@{
+    Layout = "_BancaLayout";
+    ViewData["Title"] = "Transferir y Yapear";
+    ViewData["Menu"] = "enviar";
+    ViewData["Pagina"] = "enviar";
+    var f = Model.Formulario;
+    var yape = f.Canal == Canales.Yape;
+    var elegido = Model.Contactos.FirstOrDefault(c => c.Id == f.ContactoId);
+    string? Invalido(string campo) => Model.CampoError == campo ? "true" : null;
+}
+<div class="bank-heading"><div><span class="eyebrow">MI BANCA</span><h1 tabindex="-1">Transferir y Yapear</h1>
+    <p class="lead">Elige un contacto y revisa los datos antes de confirmar.</p></div>
+    <span class="bank-available"><small>Saldo disponible</small><strong data-testid="saldo-disponible">@Dinero.Soles(Model.SaldoDisponibleCentimos)</strong></span></div>
+
+<form id="bank-send" class="panel bank-form" method="post" action="/banca/enviar/revisar" novalidate autocomplete="off" asp-antiforgery="true">
+    <span class="demo-tag">ENTORNO ACADÉMICO</span>
+    <h2>Datos del envío</h2>
+    <input type="hidden" name="ClaveIdempotencia" value="@f.ClaveIdempotencia" data-testid="clave">
+
+    <fieldset class="bank-switch canal-switch">
+        <legend class="sr-only">Canal de envío</legend>
+        <label class="btn secondary"><input type="radio" name="Canal" value="BCP" checked="@(!yape)">@Iconos.Svg("loan", 19)Transferencia BCP</label>
+        <label class="btn secondary"><input type="radio" name="Canal" value="Yape" checked="@yape">@Iconos.Svg("pos", 19)Yape</label>
+    </fieldset>
+
+    <div class="field">
+        <label for="bank-target">Destinatario</label>
+        <select id="bank-target" name="ContactoId" required aria-describedby="bank-error" aria-invalid="@Invalido("ContactoId")">
+            <option value="">Selecciona un contacto</option>
+            @foreach (var c in Model.Contactos)
+            {
+                <option value="@c.Id" selected="@(c.Id == f.ContactoId)" data-bcp="@c.CuentaEnmascarada" data-yape="@c.YapeEnmascarado">@c.Nombre</option>
+            }
+        </select>
+    </div>
+    <div class="field">
+        <label for="bank-mask" data-etiqueta-destino>@(yape ? "Celular de destino" : "Cuenta de destino")</label>
+        <input id="bank-mask" type="text" readonly value="@(elegido == null ? "Selecciona un contacto" : yape ? elegido.YapeEnmascarado : elegido.CuentaEnmascarada)">
+    </div>
+    <div class="field">
+        <label for="bank-amount">Monto a enviar (S/)</label>
+        <input id="bank-amount" name="Importe" type="text" inputmode="decimal" maxlength="12" value="@f.Importe" required
+               aria-describedby="bank-amount-hint bank-error" aria-invalid="@Invalido("Importe")">
+        <p class="hint" id="bank-amount-hint">Importe positivo, con hasta dos decimales.</p>
+        <div class="bank-presets">
+            @foreach (var p in new[] { 20, 50, 100, 200 })
+            {
+                <button class="btn secondary" type="button" data-preset="@p">S/ @p</button>
+            }
+        </div>
+    </div>
+    <div class="field">
+        <label for="bank-concept">Concepto (opcional)</label>
+        <input id="bank-concept" name="Concepto" type="text" maxlength="60" value="@f.Concepto" placeholder="Ej. Compra de insumos">
+    </div>
+
+    <p id="bank-error" class="field-error" role="alert" hidden="@(Model.Error == null)" data-testid="error-envio">@Iconos.Svg("alert", 19) <span>@Model.Error</span></p>
+
+    <div class="actions">
+        <a class="btn secondary" href="/banca">Volver al saldo</a>
+        <button class="btn primary" type="submit" id="btn-continuar">Continuar</button>
+    </div>
+</form>
+
+@if (Model.Revision != null)
+{
+    <dialog id="bank-dialog" aria-labelledby="send-title" aria-describedby="send-description" data-abrir="true">
+        <div class="dialog-icon">@Iconos.Svg("loan", 26)</div>
+        <h2 id="send-title" tabindex="-1">Revisa tu envío</h2>
+        <p id="send-description">Comprueba el importe y la cuenta de destino antes de confirmar.</p>
+        <partial name="_ResumenEnvio" model="Model.Revision" />
+        <form method="post" action="/banca/enviar/confirmar" class="actions" id="form-confirmar" asp-antiforgery="true">
+            <input type="hidden" name="Canal" value="@f.Canal">
+            <input type="hidden" name="ContactoId" value="@f.ContactoId">
+            <input type="hidden" name="Importe" value="@f.Importe">
+            <input type="hidden" name="Concepto" value="@f.Concepto">
+            <input type="hidden" name="ClaveIdempotencia" value="@f.ClaveIdempotencia">
+            <button class="btn secondary" type="button" data-cerrar-dialogo>Editar</button>
+            <button class="btn primary" type="submit" id="btn-confirmar" data-enviando="Enviando…">Confirmar envío</button>
+        </form>
+    </dialog>
+}

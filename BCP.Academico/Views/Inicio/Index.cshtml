@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Inicio";
+    var rapidos = new[]
+    {
+        ("/prestamos/capital-de-trabajo", "loan", "Simular un préstamo", "Calcula tu cuota mensual"),
+        ("/negocios/pos", "pos", "Cobrar con POS", "Explora la orientación comercial"),
+        ("/productos/ahorros", "savings", "Ver cuentas de ahorro", "Conoce sus usos principales"),
+        ("/ayuda/bloquear-tarjeta", "lock", "Bloquear mi tarjeta", "Administra la seguridad de tu tarjeta"),
+        ("/ayuda", "help", "Resolver una consulta", "Encuentra orientación")
+    };
+}
+<section class="hero"><div class="wrap grid hero-grid">
+    <div class="hero-copy">
+        <span class="eyebrow">SOLUCIONES PARA PEQUEÑOS NEGOCIOS</span>
+        <h1 tabindex="-1">Impulsa tu negocio <span>a tu ritmo</span></h1>
+        <p>Explora cómo financiar tu próximo paso y facilitar los cobros de tu negocio.</p>
+        <div class="actions"><a class="btn primary" href="/prestamos/capital-de-trabajo">Simular un préstamo</a><a class="btn secondary" href="/banca">Entrar a la banca de prueba</a></div>
+    </div>
+    <figure class="hero-photo">
+        <img src="~/img/negocio.webp" alt="Recurso gráfico: emprendedora atendiendo a un cliente en una panadería de barrio" width="1200" height="800">
+        <figcaption><span>@Iconos.Svg("shop", 23)</span><div><strong>Capital de trabajo</strong><small>Financiamiento para tu negocio</small></div></figcaption>
+    </figure>
+</div></section>
+<section class="wrap home-quick" aria-labelledby="quick-heading">
+    <div class="section-head"><h2 id="quick-heading">¿Qué necesitas hacer hoy?</h2><p>Elige una opción para empezar.</p></div>
+    <div class="quick-grid">
+        @foreach (var (url, icono, titulo, nota) in rapidos)
+        {
+            <a class="quick-card" href="@url"><span class="quick-icon">@Iconos.Svg(icono, 30)</span><strong>@titulo</strong><small>@nota</small></a>
+        }
+    </div>
+</section>
+<section class="wrap cuy-home" aria-labelledby="cuy-home-title">
+    <div class="cuy-copy"><span class="eyebrow">AYUDA Y EDUCACIÓN</span><h2 id="cuy-home-title">Preguntas frecuentes</h2><p>Encuentra respuestas sobre tus cuentas, pagos y acceso.</p><a class="btn secondary" href="/ayuda">Ver preguntas frecuentes</a></div>
+    <figure><img src="~/img/cuy-inicio.webp" alt="Ilustración: cuy de la demo con gorro y manta andinos" width="1200" height="800"></figure>
+</section>

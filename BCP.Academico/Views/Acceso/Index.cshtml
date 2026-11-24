@@ -1,0 +1,37 @@
+@model AccesoViewModel
+@{
+    ViewData["Title"] = "Acceso a la demo";
+    ViewData["Seccion"] = "banca";
+    var mensaje = TempData["Mensaje"] as string;
+}
+<div class="wrap interior">
+    <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol><li><a href="/">Inicio</a></li><li><span aria-current="page">Acceso a la demo</span></li></ol></nav>
+    <partial name="_Mensajes" model="@((mensaje, "info"))" />
+    <div class="grid login-grid">
+        <div class="login-pane"><span>LABORATORIO BCP</span>
+            <h2>Tu banca de prueba, en un solo lugar</h2>
+            <p>Consulta saldos, simula envíos y revisa tus constancias.</p>
+            <figure class="product-photo login-photo"><img src="~/img/cuy-acceso.webp" alt="Ilustración: cuy con camiseta blanca de franja roja y pelota de fútbol" width="1200" height="800"></figure>
+        </div>
+        <section class="panel login-main">
+            <div class="page-intro"><span class="eyebrow">ACCESO ACADÉMICO</span><h1 tabindex="-1">Te damos la bienvenida</h1>
+                <p class="lead">Elige un perfil ficticio y escribe el código de acceso del curso. No uses claves ni datos reales.</p></div>
+            <form id="login-form" method="post" action="/acceso" autocomplete="off" novalidate asp-antiforgery="true">
+                <input type="hidden" name="ReturnUrl" value="@Model.Formulario.ReturnUrl">
+                <div class="field"><label for="profile">Perfil ficticio</label>
+                    <select id="profile" name="Perfil">
+                        @foreach (var p in Model.Perfiles)
+                        {
+                            <option value="@p.Codigo" selected="@(p.Codigo == Model.Formulario.Perfil)">@p.Nombre</option>
+                        }
+                    </select></div>
+                <div class="field"><label for="demo-code">Código de demostración</label>
+                    <input id="demo-code" name="Codigo" type="text" maxlength="16" spellcheck="false" required aria-describedby="login-hint login-error" aria-invalid="@(Model.Error != null ? "true" : null)">
+                    <p id="login-hint" class="hint">Escribe el código visible <strong>DEMO-BCP</strong>.</p>
+                    <p class="field-error" role="alert" id="login-error" hidden="@(Model.Error == null)">@Iconos.Svg("alert", 19) <span>@Model.Error</span></p>
+                </div>
+                <div class="actions"><a class="btn secondary" href="/">Volver al inicio</a><button class="btn primary" type="submit" data-enviando="Ingresando…">Iniciar sesión de prueba</button></div>
+            </form>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+@{
+    var seccion = ViewData["Seccion"] as string ?? "";
+    var autenticado = User.Identity?.IsAuthenticated == true;
+    string Activo(params string[] s) => s.Contains(seccion) ? "nav-active" : "";
+}
+<!doctype html>
+<html lang="es-PE">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Proyecto académico del Grupo 7 sobre el caso BCP. Datos y operaciones ficticias.">
+    <meta name="robots" content="noindex,nofollow">
+    <title>@(ViewData["Title"] ?? "Inicio") · Laboratorio BCP</title>
+    <link rel="icon" href="~/img/mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/banca.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/mvp.css" asp-append-version="true">
+    <script defer src="~/js/site.js" asp-append-version="true"></script>
+</head>
+<body data-pagina="@(ViewData["Pagina"] ?? "")">
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <header class="site-header">
+        <div class="audience-bar"><div class="wrap audience-inner">
+            <nav aria-label="Segmentos"><a href="/">Personas</a><a href="/negocios">Pequeños negocios</a></nav>
+            <span>@Iconos.Svg("info", 15) Proyecto académico · Grupo 7 · Operaciones de práctica</span>
+        </div></div>
+        <div class="wrap header-grid">
+            <a class="brand" href="/"><span class="bcp-wordmark" aria-hidden="true"></span><span class="sr-only">Laboratorio BCP · Inicio</span></a>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <details class="nav-products">
+                    <summary class="@Activo("productos")">Productos <span class="chevron" aria-hidden="true"></span></summary>
+                    <div class="product-menu featured-menu"><div class="product-menu-links">
+                        <a href="/productos/ahorros">@Iconos.Svg("savings", 21)Cuentas de ahorro</a>
+                        <a href="/prestamos/capital-de-trabajo">@Iconos.Svg("loan", 21)Préstamos</a>
+                        <a href="/productos">@Iconos.Svg("card", 21)Ver productos</a>
+                    </div>
+                    <div class="product-menu-feature"><strong>Capital de trabajo</strong><p>Descubre cómo cambian la cuota y el costo al ajustar el plazo.</p><a class="btn primary" href="/prestamos/capital-de-trabajo">Calcular mi cuota</a></div></div>
+                </details>
+                <details class="nav-products">
+                    <summary class="@Activo("banca", "negocios")">Soluciones Digitales <span class="chevron" aria-hidden="true"></span></summary>
+                    <div class="product-menu"><div class="product-menu-links">
+                        <a href="/negocios/pos">@Iconos.Svg("pos", 21)Cobrar con POS</a>
+                        <a href="/negocios">@Iconos.Svg("shop", 21)Soluciones para negocios</a>
+                        <a href="/banca">@Iconos.Svg("lock", 21)Banca de prueba</a>
+                        @if (autenticado)
+                        {
+                            <a href="/continuidad">@Iconos.Svg("shield", 21)Panel de continuidad</a>
+                        }
+                    </div></div>
+                </details>
+                <details class="nav-products">
+                    <summary class="@Activo("beneficios")">Beneficios <span class="chevron" aria-hidden="true"></span></summary>
+                    <div class="product-menu"><div class="product-menu-links">
+                        <a href="/beneficios">@Iconos.Svg("check", 21)Beneficios y ejemplos</a>
+                        <a href="/productos/ahorros">@Iconos.Svg("savings", 21)Organiza tus ahorros</a>
+                    </div></div>
+                </details>
+                <details class="nav-products">
+                    <summary class="@Activo("ayuda")">Ayuda y Educación <span class="chevron" aria-hidden="true"></span></summary>
+                    <div class="product-menu"><div class="product-menu-links">
+                        <a href="/ayuda">@Iconos.Svg("help", 21)Preguntas frecuentes</a>
+                        <a href="/ayuda/bloquear-tarjeta">@Iconos.Svg("lock", 21)Bloquear mi tarjeta</a>
+                        <a href="/prototipo">@Iconos.Svg("info", 21)Sobre el prototipo</a>
+                    </div></div>
+                </details>
+            </nav>
+            <div class="header-actions">
+                <button type="button" id="open-search" class="btn secondary search-btn">@Iconos.Svg("search", 18) Buscar</button>
+                <a class="btn secondary open-account" href="/productos/abrir-cuenta">@Iconos.Svg("savings", 18) Abrir cuenta</a>
+                <a class="btn primary header-login" href="/banca">@Iconos.Svg("lock", 17) @(autenticado ? "Mi banca" : "Banca por Internet")</a>
+            </div>
+        </div>
+        <dialog id="search-dialog" aria-labelledby="search-title">
+            <h2 id="search-title">Buscar en el prototipo</h2>
+            <div class="field"><label for="search-term">Qué necesitas encontrar</label><input type="search" id="search-term" placeholder="Ej. préstamo, POS o ayuda"></div>
+            <p class="sr-only" id="search-count" aria-live="polite"></p>
+            <ul id="search-results" class="search-results">
+                <li><a href="/prestamos/capital-de-trabajo" data-claves="capital de trabajo prestamo simulacion">Capital de trabajo</a></li>
+                <li><a href="/negocios/pos" data-claves="pos para negocios cobrar">POS para negocios</a></li>
+                <li><a href="/productos/ahorros" data-claves="cuentas de ahorro">Cuentas de ahorro</a></li>
+                <li><a href="/productos/abrir-cuenta" data-claves="abrir cuenta">Abrir cuenta</a></li>
+                <li><a href="/ayuda/bloquear-tarjeta" data-claves="bloquear mi tarjeta">Bloquear mi tarjeta</a></li>
+                <li><a href="/ayuda" data-claves="centro de ayuda preguntas frecuentes">Centro de ayuda</a></li>
+                <li><a href="/beneficios" data-claves="beneficios">Beneficios</a></li>
+                <li><a href="/banca" data-claves="banca por internet transferir yapear historial constancia">Banca de prueba</a></li>
+            </ul>
+            <form method="dialog" class="actions"><button class="btn secondary">Cerrar búsqueda</button></form>
+        </dialog>
+    </header>
+
+    <main id="contenido" tabindex="-1">
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap footer-grid">
+            <div class="footer-name"><span class="bcp-wordmark" aria-hidden="true"></span><div><strong>Laboratorio BCP</strong><p>Proyecto de Planeamiento Estratégico de las TIC</p></div></div>
+            <nav aria-label="Pie de página"><a href="/productos">Productos</a><a href="/ayuda">Ayuda</a><a href="/prototipo">Información del prototipo</a></nav>
+        </div>
+        <div class="wrap footer-note">Proyecto académico del Grupo 7 · Experiencias y datos ficticios · ASP.NET Core MVC + SQLite</div>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

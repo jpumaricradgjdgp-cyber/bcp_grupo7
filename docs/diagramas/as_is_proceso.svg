@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1180" viewBox="0 0 1000 1180"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#405366"/></marker></defs><rect width="1000" height="1180" fill="white"/>
+<text x="500" y="31" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="29" font-weight="700" fill="#173D60"><tspan x="500" dy="0">AS IS</tspan></text>
+<text x="500" y="62" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" font-weight="400" fill="#173D60"><tspan x="500" dy="0">Proceso actual de referencia de consulta y transferencia</tspan></text>
+<rect x="25" y="86" width="225" height="1044" fill="#FFFFFF" stroke="#AAB3BB" stroke-width="1.2"/><rect x="25" y="86" width="225" height="50" fill="#E7EFF6" stroke="#AAB3BB" stroke-width="1.2"/>
+<text x="137.5" y="111" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="19" font-weight="700" fill="#173D60"><tspan x="137.5" dy="0">Cliente</tspan></text>
+<rect x="250" y="86" width="240" height="1044" fill="#FAFCFE" stroke="#AAB3BB" stroke-width="1.2"/><rect x="250" y="86" width="240" height="50" fill="#E7EFF6" stroke="#AAB3BB" stroke-width="1.2"/>
+<text x="370" y="111" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="19" font-weight="700" fill="#173D60"><tspan x="370" dy="0">Canal digital</tspan></text>
+<rect x="490" y="86" width="240" height="1044" fill="#FFFFFF" stroke="#AAB3BB" stroke-width="1.2"/><rect x="490" y="86" width="240" height="50" fill="#E7EFF6" stroke="#AAB3BB" stroke-width="1.2"/>
+<text x="610" y="99.6" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="19" font-weight="700" fill="#173D60"><tspan x="610" dy="0">Servicio</tspan><tspan x="610" dy="22.8">transaccional</tspan></text>
+<rect x="730" y="86" width="245" height="1044" fill="#FAFCFE" stroke="#AAB3BB" stroke-width="1.2"/><rect x="730" y="86" width="245" height="50" fill="#E7EFF6" stroke="#AAB3BB" stroke-width="1.2"/>
+<text x="852.5" y="99.6" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="19" font-weight="700" fill="#173D60"><tspan x="852.5" dy="0">Operación y</tspan><tspan x="852.5" dy="22.8">continuidad</tspan></text>
+<text x="500" y="1153" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="16" font-weight="400" fill="#173D60"><tspan x="500" dy="0">Círculo: inicio o fin   Rectángulo: actividad   Rombo: decisión</tspan></text>
+<polyline points="137,172 137,196" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<polyline points="227,240 280,240" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<polyline points="460,240 520,240" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<polyline points="610,284 610,376" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<polyline points="520,420 370,420 370,545" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<polyline points="370,655 370,736" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<rect x="317" y="675" width="60" height="28" rx="3" fill="white"/>
+<text x="347" y="689" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" font-weight="400" fill="#173D60"><tspan x="347" dy="0">Sí</tspan></text>
+<polyline points="280,780 227,780" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<polyline points="137,824 137,880" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<polyline points="445,600 475,600 475,830 762,830" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<rect x="444" y="557" width="60" height="28" rx="3" fill="white"/>
+<text x="474" y="571" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" font-weight="400" fill="#173D60"><tspan x="474" dy="0">No</tspan></text>
+<polyline points="852,874 852,956" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<polyline points="762,1000 227,1000" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<polyline points="137,1044 137,1070" fill="none" stroke="#405366" stroke-width="2.5" marker-end="url(#arrow)" stroke-linejoin="round"/>
+<polyline points="610,464 610,565" fill="none" stroke="#667D90" stroke-width="1.8" stroke-dasharray="6 5" stroke-linejoin="round"/>
+<polyline points="852,495 852,786" fill="none" stroke="#667D90" stroke-width="1.8" stroke-dasharray="6 5" stroke-linejoin="round"/>
+<circle cx="137" cy="155" r="17" fill="#EAFFD9" stroke="#6C9A3E" stroke-width="2"/>
+<rect x="47" y="196" width="180" height="88" rx="9" fill="#EDF5FC" stroke="#447EA9" stroke-width="2"/>
+<text x="137" y="228" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20" font-weight="400" fill="#173D60"><tspan x="137" dy="0">Ingresar consulta</tspan><tspan x="137" dy="24">o transferencia</tspan></text>
+<rect x="280" y="196" width="180" height="88" rx="9" fill="#EDF5FC" stroke="#447EA9" stroke-width="2"/>
+<text x="370" y="228" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20" font-weight="400" fill="#173D60"><tspan x="370" dy="0">Validar acceso</tspan><tspan x="370" dy="24">y datos</tspan></text>
+<rect x="520" y="196" width="180" height="88" rx="9" fill="#EDF5FC" stroke="#447EA9" stroke-width="2"/>
+<text x="610" y="228" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20" font-weight="400" fill="#173D60"><tspan x="610" dy="0">Validar reglas</tspan><tspan x="610" dy="24">y procesar</tspan></text>
+<rect x="520" y="376" width="180" height="88" rx="9" fill="#EDF5FC" stroke="#447EA9" stroke-width="2"/>
+<text x="610" y="408" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20" font-weight="400" fill="#173D60"><tspan x="610" dy="0">Registrar</tspan><tspan x="610" dy="24">resultado</tspan></text>
+<path d="M 370 545 L 445 600 L 370 655 L 295 600 Z" fill="#FFF9D6" stroke="#9E9B47" stroke-width="2"/>
+<text x="370" y="589.2" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" font-weight="400" fill="#173D60"><tspan x="370" dy="0">¿Hay</tspan><tspan x="370" dy="21.599999999999998">respuesta?</tspan></text>
+<rect x="280" y="736" width="180" height="88" rx="9" fill="#EDF5FC" stroke="#447EA9" stroke-width="2"/>
+<text x="370" y="768" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20" font-weight="400" fill="#173D60"><tspan x="370" dy="0">Mostrar</tspan><tspan x="370" dy="24">resultado</tspan></text>
+<rect x="47" y="736" width="180" height="88" rx="9" fill="#EDF5FC" stroke="#447EA9" stroke-width="2"/>
+<text x="137" y="768" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20" font-weight="400" fill="#173D60"><tspan x="137" dy="0">Revisar</tspan><tspan x="137" dy="24">resultado</tspan></text>
+<circle cx="137" cy="900" r="20" fill="#FFE5E5" stroke="#C74848" stroke-width="4"/>
+<rect x="762" y="786" width="180" height="88" rx="9" fill="#EDF5FC" stroke="#447EA9" stroke-width="2"/>
+<text x="852" y="818" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20" font-weight="400" fill="#173D60"><tspan x="852" dy="0">Revisar incidente</tspan><tspan x="852" dy="24">y registros</tspan></text>
+<rect x="762" y="956" width="180" height="88" rx="9" fill="#EDF5FC" stroke="#447EA9" stroke-width="2"/>
+<text x="852" y="988" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20" font-weight="400" fill="#173D60"><tspan x="852" dy="0">Comunicar estado</tspan><tspan x="852" dy="24">o alternativa</tspan></text>
+<rect x="47" y="956" width="180" height="88" rx="9" fill="#EDF5FC" stroke="#447EA9" stroke-width="2"/>
+<text x="137" y="988" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="20" font-weight="400" fill="#173D60"><tspan x="137" dy="0">Recibir</tspan><tspan x="137" dy="24">orientación</tspan></text>
+<circle cx="137" cy="1090" r="20" fill="#FFE5E5" stroke="#C74848" stroke-width="4"/>
+<path d="M 525 565 H 670 L 695 590 V 655 H 525 Z M 670 565 V 590 H 695" fill="white" stroke="#8C9DAC" stroke-width="1.5"/>
+<text x="610" y="604.2" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="18" font-weight="400" fill="#173D60"><tspan x="610" dy="0">Registros de</tspan><tspan x="610" dy="21.599999999999998">operación</tspan></text>
+<path d="M 760 385 H 944 V 495 H 760 Z" fill="#FFFFF7" stroke="#A6ADB3" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="852" y="419.6" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="17" font-weight="400" fill="#173D60"><tspan x="852" dy="0">Inventario, controles</tspan><tspan x="852" dy="20.4">y tiempos internos</tspan><tspan x="852" dy="20.4">por validar.</tspan></text>
+</svg>

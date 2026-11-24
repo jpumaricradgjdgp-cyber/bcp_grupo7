@@ -1,0 +1,10 @@
+@model string
+@{
+    var clase = Model switch
+    {
+        EstadosOperacion.Confirmada => "confirmada",
+        EstadosOperacion.Extornada => "extornada",
+        _ => "proceso"
+    };
+}
+<span class="bank-state @clase">@Model</span>

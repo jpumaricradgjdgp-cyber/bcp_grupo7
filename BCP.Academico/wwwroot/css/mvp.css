@@ -1,0 +1,44 @@
+/* Estilos añadidos para el MVP MVC (avisos, tablas, panel de continuidad). Reutiliza los tokens de styles.css. */
+.aviso { display:flex; gap:.6rem; align-items:flex-start; margin:0 0 1.2rem; padding:.9rem 1.1rem; border-radius:14px; border:1px solid var(--line); background:var(--light); color:var(--navy); font-weight:550; }
+.aviso svg { flex:none; margin-top:.1rem; }
+.aviso-exito { background:#ecf8ef; border-color:#a9d8b4; color:#14532d; }
+.aviso-error { background:var(--error-bg); border-color:#f0b8b1; color:var(--error); }
+.bank-row-amount.abono { color:#17703a; }
+.bank-who { display:flex; align-items:center; gap:.4rem; margin:1rem 0 .4rem; color:var(--muted); font-size:.92rem; }
+.bank-logout { margin:.2rem 0 .6rem; }
+.bank-logout .btn { width:100%; }
+.canal-switch { border:0; padding:0; margin:0 0 1rem; display:flex; gap:.6rem; flex-wrap:wrap; }
+.canal-switch label { cursor:pointer; position:relative; }
+.canal-switch input { position:absolute; opacity:0; pointer-events:none; }
+.canal-switch label.activo, .canal-switch label:has(input:checked) { background:var(--navy); color:var(--white); border-color:var(--navy); }
+.canal-switch label:has(input:focus-visible) { outline:3px solid var(--orange); outline-offset:2px; }
+.tabla-scroll { overflow-x:auto; }
+.tabla { width:100%; border-collapse:collapse; font-size:.92rem; }
+.tabla th, .tabla td { text-align:left; padding:.6rem .7rem; border-bottom:1px solid var(--line); vertical-align:top; }
+.tabla th { color:var(--muted); font-weight:650; font-size:.82rem; text-transform:uppercase; letter-spacing:.03em; }
+.tabla .sub { display:block; color:var(--muted); }
+.asientos { margin:1.2rem 0; border:1px solid var(--line); border-radius:14px; padding:.8rem 1rem; background:var(--paper); }
+.asientos summary { cursor:pointer; font-weight:650; }
+.reintento { margin-top:1.4rem; padding-top:1.2rem; border-top:1px dashed var(--line); }
+.kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:.8rem; margin:0 0 1.4rem; }
+.kpi { background:var(--white); border:1px solid var(--line); border-radius:16px; padding:.9rem 1rem; box-shadow:var(--shadow); }
+.kpi small { display:block; color:var(--muted); font-weight:600; }
+.kpi strong { font-size:1.6rem; color:var(--navy); }
+.kpi strong.kpi-fecha { font-size:1rem; }
+.cont-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; margin-bottom:1.4rem; }
+.escenario { display:flex; gap:.7rem; align-items:flex-start; padding:.7rem .8rem; border:1px solid var(--line); border-radius:12px; margin-bottom:.5rem; cursor:pointer; }
+.escenario:has(input:checked) { border-color:var(--blue); background:var(--light); }
+.escenario small { display:block; color:var(--muted); }
+.resultado-concurrente { margin:1rem 0 0; padding-left:1.2rem; font-size:.92rem; }
+.resultado-concurrente .resumen { list-style:none; margin-top:.6rem; margin-left:-1.2rem; padding:.6rem .8rem; background:#ecf8ef; border-radius:10px; }
+.conciliar { display:flex; flex-direction:column; gap:.3rem; }
+.btn.mini { padding:.35rem .7rem; font-size:.8rem; min-height:auto; }
+.success-icon.alerta { background:var(--error-bg); color:var(--error); }
+.estado-espera .success-icon.alerta { background:#fff6e5; color:#9a5b00; }
+.bank-state.proceso { background:#fff6e5; color:#8a4f00; }
+code { font-family:Consolas, "Cascadia Mono", monospace; background:var(--paper); padding:.05rem .3rem; border-radius:6px; }
+@media print {
+  .site-header, .site-footer, .bank-side, .no-print, .skip { display:none !important; }
+  .bank-layout { display:block; }
+  .bank-backdrop { background:#fff; }
+}

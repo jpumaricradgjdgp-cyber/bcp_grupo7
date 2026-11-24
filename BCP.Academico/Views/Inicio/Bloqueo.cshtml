@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Bloquear mi tarjeta";
+    ViewData["Seccion"] = "ayuda";
+    ViewData["Pagina"] = "bloqueo";
+}
+<div class="wrap interior" data-flujo="bloqueo">
+    <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol><li><a href="/">Inicio</a></li><li><a href="/ayuda">Ayuda</a></li><li><span aria-current="page">Bloquear mi tarjeta</span></li></ol></nav>
+    <div data-etapa="seleccion">
+        <div class="page-intro"><span class="eyebrow">SEGURIDAD</span><h1 tabindex="-1">Bloquear mi tarjeta</h1><p class="lead">Selecciona la tarjeta que quieres bloquear y revisa sus últimos cuatro dígitos.</p></div>
+        <div class="grid flow-grid">
+            <section class="panel flow-main"><h2>Selecciona la tarjeta</h2>
+                <label class="select-card"><input id="demo-card" type="checkbox" checked>
+                    <span class="card-art" aria-hidden="true">@Iconos.Svg("card", 27)<b>DEMO</b></span>
+                    <span><strong>Tarjeta de débito</strong><small>•••• •••• •••• 2048</small></span></label>
+                <div class="actions"><a class="btn secondary" href="/ayuda">Volver a ayuda</a><button id="block-continue" class="btn primary" type="button">Continuar</button></div>
+            </section>
+            <aside class="panel flow-side soft"><span class="demo-tag">@Iconos.Svg("info", 16) Entorno académico</span><h2>Antes de confirmar</h2><p>Verás los últimos cuatro dígitos de la tarjeta de prueba para comprobar tu selección.</p></aside>
+        </div>
+        <dialog id="block-confirm" aria-labelledby="block-title" aria-describedby="block-description">
+            <div class="dialog-icon">@Iconos.Svg("lock", 28)</div>
+            <h2 id="block-title" tabindex="-1">¿Confirmas el bloqueo?</h2>
+            <p id="block-description">Se cambiará el estado de la tarjeta terminada en 2048 en este entorno académico.</p>
+            <form method="dialog" class="actions"><button class="btn secondary" value="cancel">Cancelar</button><button class="btn primary" value="confirm">Confirmar bloqueo</button></form>
+        </dialog>
+    </div>
+    <div data-etapa="hecho" hidden>
+        <section class="success"><div class="success-icon">@Iconos.Svg("check", 32)</div><div><span class="demo-tag">@Iconos.Svg("info", 16) Entorno académico</span><h1 tabindex="-1">Tarjeta bloqueada en el ejercicio</h1><p>Se actualizó el estado de la tarjeta terminada en 2048.</p></div></section>
+        <div class="actions"><a class="btn secondary" href="/">Volver al inicio</a></div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+@model List<MovimientoItem>
+@{
+    Layout = "_BancaLayout";
+    ViewData["Title"] = "Movimientos de la cuenta";
+    ViewData["Menu"] = "inicio";
+    var cuenta = (TarjetaSaldoViewModel)ViewBag.Cuenta;
+}
+<div class="bank-heading"><div><span class="eyebrow">MI BANCA</span><h1 tabindex="-1">Movimientos de la cuenta</h1>
+    <p class="lead">@cuenta.Tipo @cuenta.CuentaEnmascarada · débitos, abonos y ajustes registrados en SQLite.</p></div>
+    <span class="bank-available"><small>Saldo disponible</small><strong>@Dinero.Soles(cuenta.SaldoCentimos)</strong></span></div>
+<section class="panel bank-log"><partial name="_ListaMovimientos" model="Model" /></section>
+<div class="actions"><a class="btn secondary" href="/banca">Volver al saldo</a></div>

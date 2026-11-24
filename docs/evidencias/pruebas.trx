@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="b52b1e3a-f79d-48d2-9ff5-3d0d1855022d" name="USUARIO@DESKTOP-3CEL98R 2026-11-24 08:44:59" runUser="DESKTOP-3CEL98R\USUARIO" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-24T08:44:59.2970012-05:00" queuing="2026-11-24T08:44:59.2970017-05:00" start="2026-11-24T08:44:53.8848606-05:00" finish="2026-11-24T08:45:04.5639629-05:00" />
+  <TestSettings name="default" id="8e287281-0d7b-45de-835e-1339fdc6d3bd">
+    <Deployment runDeploymentRoot="USUARIO_DESKTOP-3CEL98R_2026-11-24_08_44_59" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="c023b70c-f5de-4d46-b0fc-524d75a90f90" testId="d3f48685-0113-022c-c944-33dd2ef18621" testName="P07 Rechazo y compensación (R1/R3): un único ajuste vinculado al cargo aunque se concilie dos veces" computerName="DESKTOP-3CEL98R" duration="00:00:00.6720990" startTime="2026-11-24T08:45:02.6271312-05:00" endTime="2026-11-24T08:45:03.2997300-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c023b70c-f5de-4d46-b0fc-524d75a90f90">
+      <Output>
+        <StdOut>LAB-2026-501184: En verificación (cargo, sin abono) → rechazo confirmado ×2 → Extornada con 1 débito + 1 ajuste; saldo vuelve a 5,320.00.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="421d5b58-9c96-4364-ba16-682b199d00e7" testId="2933ed88-b6dc-900a-223d-56263e17bc19" testName="P08 Persistencia (R3): tras reiniciar el servidor se conservan saldo, historial y constancia" computerName="DESKTOP-3CEL98R" duration="00:00:00.8307152" startTime="2026-11-24T08:45:00.7958647-05:00" endTime="2026-11-24T08:45:01.6276356-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="421d5b58-9c96-4364-ba16-682b199d00e7">
+      <Output>
+        <StdOut>Reinicio: LAB-2026-501184 y saldo S/ 5,270.00 recuperados desde el mismo archivo SQLite (2 eventos de arranque).</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cf947833-87ef-4be0-a307-73b6a0f2a869" testId="be09a710-f283-05b1-ebee-42b1121e6ef0" testName="P04 Reintento concurrente (R1): 10 envíos con la misma clave generan una sola operación y la misma referencia" computerName="DESKTOP-3CEL98R" duration="00:00:01.0047858" startTime="2026-11-24T08:44:59.7914823-05:00" endTime="2026-11-24T08:45:00.7955130-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cf947833-87ef-4be0-a307-73b6a0f2a869">
+      <Output>
+        <StdOut>Reintento, Reintento, Registrada, Reintento, Reintento, Reintento, Reintento, Reintento, Reintento, Reintento&#xD;
+1 Registrada + 9 Reintento → LAB-2026-501184; 1 débito; saldo 5,270.00; conflicto de clave → 409 sin afectar fondos.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cbabc69f-e1ad-42c7-977e-dba26bc1da25" testId="49f5dbc1-ef58-371d-d36d-a1be5feb1dea" testName="P01 Consulta y acceso (R2): cada perfil ve sus datos y se deniega la constancia y la cuenta ajena" computerName="DESKTOP-3CEL98R" duration="00:00:00.5042417" startTime="2026-11-24T08:45:01.6281070-05:00" endTime="2026-11-24T08:45:02.1318429-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cbabc69f-e1ad-42c7-977e-dba26bc1da25">
+      <Output>
+        <StdOut>Mariana ve S/ 5,320.00 y •••• 2048; Elena ve S/ 420.00; constancia y cuenta ajenas → 403 registrados en bitácora.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="59736d44-d0e4-4e05-9744-e71504be7305" testId="0b46cc70-e1a0-6cd8-c34c-28a62e388a96" testName="P02 Transferencia válida (R1): S/ 50.00 deja 5,270.00 y 470.00 con un débito, un abono y una referencia" computerName="DESKTOP-3CEL98R" duration="00:00:00.4941074" startTime="2026-11-24T08:45:02.1321358-05:00" endTime="2026-11-24T08:45:02.6267376-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="59736d44-d0e4-4e05-9744-e71504be7305">
+      <Output>
+        <StdOut>LAB-2026-501184 Confirmada · Mariana 5,320.00 → 5,270.00 · Elena 420.00 → 470.00 · 1 débito + 1 abono.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1020aa69-bb0f-4821-9b07-e000a98c630c" testId="0e9d86d8-cb63-1de2-9506-c32ce27e8ba7" testName="P06 Falla antes de confirmar (R3): no quedan cargos ni abonos parciales" computerName="DESKTOP-3CEL98R" duration="00:00:00.5497075" startTime="2026-11-24T08:44:59.2667795-05:00" endTime="2026-11-24T08:44:59.7899399-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1020aa69-bb0f-4821-9b07-e000a98c630c">
+      <Output>
+        <StdOut>503 con saldos 5,320.00 / 420.00 intactos, 0 operaciones nuevas, evento registrado; el reintento posterior registra una sola vez.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="579fccf6-0144-487c-b8ee-2474ecaac895" testId="5f262f98-70ca-d312-c899-a0c513ef13f6" testName="P09 Cierre de sesión y antifalsificación: la cookie anterior deja de servir y un POST sin token se rechaza" computerName="DESKTOP-3CEL98R" duration="00:00:00.3763817" startTime="2026-11-24T08:45:03.6361359-05:00" endTime="2026-11-24T08:45:04.0127251-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="579fccf6-0144-487c-b8ee-2474ecaac895">
+      <Output>
+        <StdOut>POST sin token → 400 sin cambios; tras cerrar sesión /banca redirige a /acceso.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d2a00a13-2a20-43a1-8ce8-697e54b74ba7" testId="a0df2373-fdd5-bbf1-114f-f67e9d339ff8" testName="P10 Sello de sesión: una cookie copiada antes del cierre de sesión ya no da acceso" computerName="DESKTOP-3CEL98R" duration="00:00:00.3350970" startTime="2026-11-24T08:45:03.3001651-05:00" endTime="2026-11-24T08:45:03.6356791-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d2a00a13-2a20-43a1-8ce8-697e54b74ba7">
+      <Output>
+        <StdOut>La cookie emitida antes del cierre de sesión es rechazada (sello rotado en SQLite).</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="81c2a940-4b5f-455c-b696-c5ece82bc4f0" testId="dacd5db0-eab8-443a-dee9-f0544b4cbf5c" testName="P05 Pérdida de respuesta (R3): la operación guardada se recupera con la misma clave y desde el historial" computerName="DESKTOP-3CEL98R" duration="00:00:00.4317384" startTime="2026-11-24T08:45:04.0131734-05:00" endTime="2026-11-24T08:45:04.4452166-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="81c2a940-4b5f-455c-b696-c5ece82bc4f0">
+      <Output>
+        <StdOut>Respuesta 504 sin referencia → historial muestra LAB-2026-501184 → reintento devuelve la misma referencia; un solo cargo.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1a66cd07-cd30-4fbd-aa65-02cb0d1f9470" testId="1c7c392d-3cf4-76a0-afc3-cfeb214e2091" testName="P03 Validación de saldo: un importe mayor al disponible se rechaza y los saldos no cambian" computerName="DESKTOP-3CEL98R" duration="00:00:03.8899853" startTime="2026-11-24T08:44:55.3305269-05:00" endTime="2026-11-24T08:44:59.2359309-05:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1a66cd07-cd30-4fbd-aa65-02cb0d1f9470">
+      <Output>
+        <StdOut>S/ 6,000 &gt; S/ 5,320 → 422 con mensaje; monto negativo y contacto ajeno → 422; saldos y operaciones sin cambios.</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="P04 Reintento concurrente (R1): 10 envíos con la misma clave generan una sola operación y la misma referencia" storage="c:\users\usuario\documents\codex\2026-10-24\pue\bcp_mvp\bcp.academico.tests\bin\debug\net10.0\bcp.academico.tests.dll" id="be09a710-f283-05b1-ebee-42b1121e6ef0">
+      <Execution id="cf947833-87ef-4be0-a307-73b6a0f2a869" />
+      <TestMethod codeBase="C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico.Tests\bin\Debug\net10.0\BCP.Academico.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BCP.Academico.Tests.PruebasMvp" name="ReintentoConcurrente" />
+    </UnitTest>
+    <UnitTest name="P03 Validación de saldo: un importe mayor al disponible se rechaza y los saldos no cambian" storage="c:\users\usuario\documents\codex\2026-10-24\pue\bcp_mvp\bcp.academico.tests\bin\debug\net10.0\bcp.academico.tests.dll" id="1c7c392d-3cf4-76a0-afc3-cfeb214e2091">
+      <Execution id="1a66cd07-cd30-4fbd-aa65-02cb0d1f9470" />
+      <TestMethod codeBase="C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico.Tests\bin\Debug\net10.0\BCP.Academico.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BCP.Academico.Tests.PruebasMvp" name="ValidacionDeSaldo" />
+    </UnitTest>
+    <UnitTest name="P05 Pérdida de respuesta (R3): la operación guardada se recupera con la misma clave y desde el historial" storage="c:\users\usuario\documents\codex\2026-10-24\pue\bcp_mvp\bcp.academico.tests\bin\debug\net10.0\bcp.academico.tests.dll" id="dacd5db0-eab8-443a-dee9-f0544b4cbf5c">
+      <Execution id="81c2a940-4b5f-455c-b696-c5ece82bc4f0" />
+      <TestMethod codeBase="C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico.Tests\bin\Debug\net10.0\BCP.Academico.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BCP.Academico.Tests.PruebasMvp" name="PerdidaDeRespuesta" />
+    </UnitTest>
+    <UnitTest name="P08 Persistencia (R3): tras reiniciar el servidor se conservan saldo, historial y constancia" storage="c:\users\usuario\documents\codex\2026-10-24\pue\bcp_mvp\bcp.academico.tests\bin\debug\net10.0\bcp.academico.tests.dll" id="2933ed88-b6dc-900a-223d-56263e17bc19">
+      <Execution id="421d5b58-9c96-4364-ba16-682b199d00e7" />
+      <TestMethod codeBase="C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico.Tests\bin\Debug\net10.0\BCP.Academico.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BCP.Academico.Tests.PruebasMvp" name="Persistencia" />
+    </UnitTest>
+    <UnitTest name="P02 Transferencia válida (R1): S/ 50.00 deja 5,270.00 y 470.00 con un débito, un abono y una referencia" storage="c:\users\usuario\documents\codex\2026-10-24\pue\bcp_mvp\bcp.academico.tests\bin\debug\net10.0\bcp.academico.tests.dll" id="0b46cc70-e1a0-6cd8-c34c-28a62e388a96">
+      <Execution id="59736d44-d0e4-4e05-9744-e71504be7305" />
+      <TestMethod codeBase="C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico.Tests\bin\Debug\net10.0\BCP.Academico.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BCP.Academico.Tests.PruebasMvp" name="TransferenciaValida" />
+    </UnitTest>
+    <UnitTest name="P07 Rechazo y compensación (R1/R3): un único ajuste vinculado al cargo aunque se concilie dos veces" storage="c:\users\usuario\documents\codex\2026-10-24\pue\bcp_mvp\bcp.academico.tests\bin\debug\net10.0\bcp.academico.tests.dll" id="d3f48685-0113-022c-c944-33dd2ef18621">
+      <Execution id="c023b70c-f5de-4d46-b0fc-524d75a90f90" />
+      <TestMethod codeBase="C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico.Tests\bin\Debug\net10.0\BCP.Academico.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BCP.Academico.Tests.PruebasMvp" name="RechazoYCompensacion" />
+    </UnitTest>
+    <UnitTest name="P06 Falla antes de confirmar (R3): no quedan cargos ni abonos parciales" storage="c:\users\usuario\documents\codex\2026-10-24\pue\bcp_mvp\bcp.academico.tests\bin\debug\net10.0\bcp.academico.tests.dll" id="0e9d86d8-cb63-1de2-9506-c32ce27e8ba7">
+      <Execution id="1020aa69-bb0f-4821-9b07-e000a98c630c" />
+      <TestMethod codeBase="C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico.Tests\bin\Debug\net10.0\BCP.Academico.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BCP.Academico.Tests.PruebasMvp" name="FallaAntesDeConfirmar" />
+    </UnitTest>
+    <UnitTest name="P10 Sello de sesión: una cookie copiada antes del cierre de sesión ya no da acceso" storage="c:\users\usuario\documents\codex\2026-10-24\pue\bcp_mvp\bcp.academico.tests\bin\debug\net10.0\bcp.academico.tests.dll" id="a0df2373-fdd5-bbf1-114f-f67e9d339ff8">
+      <Execution id="d2a00a13-2a20-43a1-8ce8-697e54b74ba7" />
+      <TestMethod codeBase="C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico.Tests\bin\Debug\net10.0\BCP.Academico.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BCP.Academico.Tests.PruebasMvp" name="CookieAnteriorInvalidada" />
+    </UnitTest>
+    <UnitTest name="P09 Cierre de sesión y antifalsificación: la cookie anterior deja de servir y un POST sin token se rechaza" storage="c:\users\usuario\documents\codex\2026-10-24\pue\bcp_mvp\bcp.academico.tests\bin\debug\net10.0\bcp.academico.tests.dll" id="5f262f98-70ca-d312-c899-a0c513ef13f6">
+      <Execution id="579fccf6-0144-487c-b8ee-2474ecaac895" />
+      <TestMethod codeBase="C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico.Tests\bin\Debug\net10.0\BCP.Academico.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BCP.Academico.Tests.PruebasMvp" name="CierreDeSesionYAntifalsificacion" />
+    </UnitTest>
+    <UnitTest name="P01 Consulta y acceso (R2): cada perfil ve sus datos y se deniega la constancia y la cuenta ajena" storage="c:\users\usuario\documents\codex\2026-10-24\pue\bcp_mvp\bcp.academico.tests\bin\debug\net10.0\bcp.academico.tests.dll" id="49f5dbc1-ef58-371d-d36d-a1be5feb1dea">
+      <Execution id="cbabc69f-e1ad-42c7-977e-dba26bc1da25" />
+      <TestMethod codeBase="C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico.Tests\bin\Debug\net10.0\BCP.Academico.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="BCP.Academico.Tests.PruebasMvp" name="ConsultaYAcceso" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="d3f48685-0113-022c-c944-33dd2ef18621" executionId="c023b70c-f5de-4d46-b0fc-524d75a90f90" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2933ed88-b6dc-900a-223d-56263e17bc19" executionId="421d5b58-9c96-4364-ba16-682b199d00e7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="be09a710-f283-05b1-ebee-42b1121e6ef0" executionId="cf947833-87ef-4be0-a307-73b6a0f2a869" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="49f5dbc1-ef58-371d-d36d-a1be5feb1dea" executionId="cbabc69f-e1ad-42c7-977e-dba26bc1da25" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0b46cc70-e1a0-6cd8-c34c-28a62e388a96" executionId="59736d44-d0e4-4e05-9744-e71504be7305" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0e9d86d8-cb63-1de2-9506-c32ce27e8ba7" executionId="1020aa69-bb0f-4821-9b07-e000a98c630c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5f262f98-70ca-d312-c899-a0c513ef13f6" executionId="579fccf6-0144-487c-b8ee-2474ecaac895" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a0df2373-fdd5-bbf1-114f-f67e9d339ff8" executionId="d2a00a13-2a20-43a1-8ce8-697e54b74ba7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dacd5db0-eab8-443a-dee9-f0544b4cbf5c" executionId="81c2a940-4b5f-455c-b696-c5ece82bc4f0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1c7c392d-3cf4-76a0-afc3-cfeb214e2091" executionId="1a66cd07-cd30-4fbd-aa65-02cb0d1f9470" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados sin formato de lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos los resultados cargados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="10" executed="10" passed="10" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.15)&#xD;
+[xUnit.net 00:00:00.39]   Discovering: BCP.Academico.Tests&#xD;
+[xUnit.net 00:00:00.49]   Discovered:  BCP.Academico.Tests&#xD;
+[xUnit.net 00:00:00.53]   Starting:    BCP.Academico.Tests&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20411]&#xD;
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20402]&#xD;
+      Applying migration '20261124130218_Inicial'.&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://localhost:5080&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20411]&#xD;
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20402]&#xD;
+      Applying migration '20261124130218_Inicial'.&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://localhost:5080&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico&#xD;
+info: BCP.Academico.Services.ServicioTransferencias[0]&#xD;
+      Transferencia LAB-2026-501184 Confirmada (Normal)&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20411]&#xD;
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20402]&#xD;
+      Applying migration '20261124130218_Inicial'.&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://localhost:5080&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico&#xD;
+info: BCP.Academico.Services.ServicioTransferencias[0]&#xD;
+      Transferencia LAB-2026-501184 Confirmada (Normal)&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20411]&#xD;
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20402]&#xD;
+      Applying migration '20261124130218_Inicial'.&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://localhost:5080&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico&#xD;
+info: BCP.Academico.Services.ServicioTransferencias[0]&#xD;
+      Transferencia LAB-2026-501184 Confirmada (Normal)&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20411]&#xD;
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20405]&#xD;
+      No migrations were applied. The database is already up to date.&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://localhost:5080&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20411]&#xD;
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20402]&#xD;
+      Applying migration '20261124130218_Inicial'.&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://localhost:5080&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20411]&#xD;
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20402]&#xD;
+      Applying migration '20261124130218_Inicial'.&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://localhost:5080&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico&#xD;
+info: BCP.Academico.Services.ServicioTransferencias[0]&#xD;
+      Transferencia LAB-2026-501184 Confirmada (Normal)&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20411]&#xD;
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20402]&#xD;
+      Applying migration '20261124130218_Inicial'.&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://localhost:5080&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico&#xD;
+info: BCP.Academico.Services.ServicioTransferencias[0]&#xD;
+      Transferencia LAB-2026-501184 En verificaci�n (ResultadoDesconocido)&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20411]&#xD;
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20402]&#xD;
+      Applying migration '20261124130218_Inicial'.&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://localhost:5080&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20411]&#xD;
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20402]&#xD;
+      Applying migration '20261124130218_Inicial'.&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://localhost:5080&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20411]&#xD;
+      Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.&#xD;
+info: Microsoft.EntityFrameworkCore.Migrations[20402]&#xD;
+      Applying migration '20261124130218_Inicial'.&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://localhost:5080&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Testing&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: C:\Users\USUARIO\Documents\Codex\2026-10-24\pue\BCP_MVP\BCP.Academico&#xD;
+info: BCP.Academico.Services.ServicioTransferencias[0]&#xD;
+      Transferencia LAB-2026-501184 Confirmada (RespuestaPerdida)&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+[xUnit.net 00:00:09.71]   Finished:    BCP.Academico.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

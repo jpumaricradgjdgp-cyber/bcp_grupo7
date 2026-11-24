@@ -1,0 +1,8 @@
+@model (string? Texto, string Tipo)
+@if (!string.IsNullOrEmpty(Model.Texto))
+{
+    var icono = Model.Tipo switch { "error" => "alert", "exito" => "check", _ => "info" };
+    <p class="aviso aviso-@Model.Tipo" role="@(Model.Tipo == "error" ? "alert" : "status")" data-testid="aviso-@Model.Tipo">
+        @Iconos.Svg(icono, 20) <span>@Model.Texto</span>
+    </p>
+}

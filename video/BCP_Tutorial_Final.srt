@@ -1,0 +1,494 @@
+1
+00:00:00,062 --> 00:00:00,400
+Hola.
+
+2
+00:00:00,450 --> 00:00:05,594
+Somos el Grupo siete del curso
+Planeamiento Estratégico de las TIC.
+
+3
+00:00:05,644 --> 00:00:10,788
+En este tutorial vas a ver el MVP que
+construimos para el caso BCP,
+
+4
+00:00:10,838 --> 00:00:13,192
+con datos totalmente ficticios.
+
+5
+00:00:13,797 --> 00:00:17,435
+En esta demostración vamos a
+transferir cincuenta soles,
+
+6
+00:00:17,485 --> 00:00:21,848
+repetir el envío y comprobar que el
+sistema registra un solo cargo.
+
+7
+00:00:21,898 --> 00:00:26,722
+Al final, reiniciaremos el servidor para ver
+que la información sigue ahí.
+
+8
+00:00:27,437 --> 00:00:28,884
+Primero, el problema.
+
+9
+00:00:28,934 --> 00:00:32,735
+En el proceso actual, si el canal
+no recibe respuesta,
+
+10
+00:00:32,785 --> 00:00:36,586
+no hay una clave estable que
+identifique la operación.
+
+11
+00:00:36,636 --> 00:00:39,795
+Un reintento podría generar
+un segundo cargo,
+
+12
+00:00:39,845 --> 00:00:43,716
+y un resultado incierto depende de
+una revisión manual.
+
+13
+00:00:44,312 --> 00:00:48,848
+En el proceso propuesto, cada envío lleva
+una clave de idempotencia.
+
+14
+00:00:48,898 --> 00:00:53,367
+El servicio guarda la operación y sus
+movimientos de forma atómica,
+
+15
+00:00:53,417 --> 00:00:57,886
+y solo compensa una vez, cuando el
+rechazo externo está confirmado.
+
+16
+00:00:58,594 --> 00:01:03,110
+Así lo implementamos con el patrón
+Modelo, Vista, Controlador.
+
+17
+00:01:03,160 --> 00:01:05,835
+La vista Razor muestra el formulario.
+
+18
+00:01:05,885 --> 00:01:08,412
+El controlador recibe la solicitud,
+
+19
+00:01:08,462 --> 00:01:12,683
+comprueba la sesión y llama al
+servicio de transferencias.
+
+20
+00:01:12,733 --> 00:01:17,986
+El servicio aplica las reglas, y Entity
+Framework guarda todo en SQLite,
+
+21
+00:01:18,036 --> 00:01:20,269
+dentro de una sola transacción.
+
+22
+00:01:20,969 --> 00:01:21,209
+Ojo:
+
+23
+00:01:21,259 --> 00:01:25,706
+esta otra es la arquitectura
+empresarial propuesta en el PESI,
+
+24
+00:01:25,756 --> 00:01:29,187
+con Azure API Management,
+microservicios en AKS,
+
+25
+00:01:29,237 --> 00:01:34,336
+el sistema central del banco y un modelo
+de lectura alimentado por CDC.
+
+26
+00:01:34,386 --> 00:01:40,284
+Nuestro MVP es la versión local de ese flujo, y
+no se conecta con sistemas reales.
+
+27
+00:01:40,953 --> 00:01:46,705
+Para arrancar, abre una terminal en la carpeta
+del proyecto y ejecuta dotnet run,
+
+28
+00:01:46,755 --> 00:01:48,783
+con la opción reiniciar demo.
+
+29
+00:01:48,833 --> 00:01:52,651
+Así la base de práctica vuelve a
+los saldos iniciales.
+
+30
+00:01:52,701 --> 00:01:57,523
+El sitio queda disponible en localhost,
+puerto cinco cero ocho cero.
+
+31
+00:01:58,406 --> 00:02:04,783
+En la pantalla de acceso elegimos el perfil
+ficticio de Mariana Torres y escribimos
+
+32
+00:02:04,833 --> 00:02:06,331
+el código del curso:
+
+33
+00:02:06,381 --> 00:02:07,647
+DEMO, guion, BCP.
+
+34
+00:02:07,697 --> 00:02:09,893
+El servidor valida el código.
+
+35
+00:02:09,943 --> 00:02:12,526
+No pedimos claves ni datos reales.
+
+36
+00:02:13,141 --> 00:02:14,390
+Este es el panel.
+
+37
+00:02:14,440 --> 00:02:19,049
+El saldo disponible es de cinco mil
+trescientos veinte soles,
+
+38
+00:02:19,099 --> 00:02:21,494
+y la cuenta aparece enmascarada.
+
+39
+00:02:21,544 --> 00:02:25,696
+Estos datos vienen de la base
+SQLite, no del navegador.
+
+40
+00:02:26,312 --> 00:02:28,376
+Vamos a Transferir por BCP.
+
+41
+00:02:28,426 --> 00:02:31,508
+Elegimos a nuestra contacto Elena Rojas.
+
+42
+00:02:31,558 --> 00:02:36,442
+Fíjate que la cuenta de destino
+también se muestra enmascarada.
+
+43
+00:02:37,062 --> 00:02:40,536
+Escribimos cincuenta soles y un
+concepto opcional.
+
+44
+00:02:40,586 --> 00:02:43,143
+Si el monto fuera mayor que el saldo,
+
+45
+00:02:43,193 --> 00:02:48,146
+el servidor lo rechazaría y explicaría el
+motivo, sin tocar los fondos.
+
+46
+00:02:48,750 --> 00:02:54,356
+Al pulsar Continuar, el servidor valida los
+datos y nos muestra la revisión:
+
+47
+00:02:54,406 --> 00:02:59,714
+destinatario, cuenta enmascarada, canal,
+monto y comisión del ejercicio.
+
+48
+00:02:59,764 --> 00:03:02,169
+Todavía no se ha registrado nada.
+
+49
+00:03:02,781 --> 00:03:03,469
+Ahora sí:
+
+50
+00:03:03,519 --> 00:03:04,782
+Confirmar envío.
+
+51
+00:03:04,832 --> 00:03:08,639
+Esta es la única acción que
+ordena el registro.
+
+52
+00:03:08,689 --> 00:03:12,906
+Obtenemos la constancia, con su
+código de operación.
+
+53
+00:03:13,516 --> 00:03:18,451
+En los asientos vemos un débito de cincuenta
+soles en la cuenta de Mariana y un
+
+54
+00:03:18,501 --> 00:03:21,416
+abono de cincuenta soles en la
+cuenta de Elena.
+
+55
+00:03:21,466 --> 00:03:25,075
+El saldo actual baja a cinco mil
+doscientos setenta soles.
+
+56
+00:03:25,687 --> 00:03:31,008
+En el historial, la operación aparece
+confirmada y con la misma referencia.
+
+57
+00:03:31,058 --> 00:03:36,452
+Desde aquí podemos abrir la constancia,
+copiar el código o guardarla en PDF.
+
+58
+00:03:37,062 --> 00:03:41,471
+Ahora repetimos exactamente el mismo
+envío, con la misma clave.
+
+59
+00:03:41,521 --> 00:03:44,868
+Es lo que pasaría si el cliente
+pulsa dos veces,
+
+60
+00:03:44,918 --> 00:03:48,336
+o si su aplicación reintenta
+después de un corte.
+
+61
+00:03:48,937 --> 00:03:54,544
+El servidor reconoce la clave, devuelve la
+misma referencia y no hace un nuevo
+
+62
+00:03:54,594 --> 00:03:54,979
+cargo.
+
+63
+00:03:55,029 --> 00:03:58,822
+El saldo sigue en cinco mil
+doscientos setenta soles.
+
+64
+00:03:58,872 --> 00:04:04,406
+La clave de idempotencia es, simplemente, el
+identificador único de un envío.
+
+65
+00:04:05,016 --> 00:04:10,212
+Para probarlo con más presión, el panel de
+continuidad envía diez solicitudes
+
+66
+00:04:10,262 --> 00:04:12,392
+simultáneas con una misma clave.
+
+67
+00:04:12,442 --> 00:04:16,002
+Es una operación nueva, de diez
+soles a Carlos Salas:
+
+68
+00:04:16,052 --> 00:04:20,975
+se registra una sola vez, y las otras nueve
+se resuelven como reintentos,
+
+69
+00:04:21,025 --> 00:04:22,610
+con la misma referencia.
+
+70
+00:04:23,219 --> 00:04:25,968
+Ahora activamos una falla controlada:
+
+71
+00:04:26,018 --> 00:04:28,237
+resultado externo desconocido.
+
+72
+00:04:28,287 --> 00:04:31,869
+Se aplicará solo a la siguiente
+operación nueva.
+
+73
+00:04:32,469 --> 00:04:36,983
+Hacemos una operación nueva, para que
+puedas seguir los saldos:
+
+74
+00:04:37,033 --> 00:04:40,098
+veinte soles por Yape, a Bodega Los Alisos.
+
+75
+00:04:40,703 --> 00:04:43,153
+El canal no confirmó ni rechazó.
+
+76
+00:04:43,203 --> 00:04:45,887
+La operación queda En verificación:
+
+77
+00:04:45,937 --> 00:04:49,012
+hay un cargo, pero todavía no hay abono.
+
+78
+00:04:49,062 --> 00:04:51,667
+No compensamos por tiempo agotado.
+
+79
+00:04:52,281 --> 00:04:57,737
+En el panel vemos la referencia, el estado,
+el último evento y el resultado.
+
+80
+00:04:57,787 --> 00:05:03,387
+Cuando llega un rechazo confirmado,
+registramos un único ajuste compensatorio,
+
+81
+00:05:03,437 --> 00:05:05,416
+vinculado al cargo original.
+
+82
+00:05:06,016 --> 00:05:10,002
+Si la conciliación se repite, no se
+crea un segundo ajuste:
+
+83
+00:05:10,052 --> 00:05:13,422
+la bitácora registra una
+conciliación sin cambios.
+
+84
+00:05:13,472 --> 00:05:17,047
+El saldo vuelve a cinco mil
+doscientos sesenta soles,
+
+85
+00:05:17,097 --> 00:05:22,451
+el mismo que antes de esta prueba, y el cargo
+original queda para la auditoría.
+
+86
+00:05:23,062 --> 00:05:28,352
+Para comprobar la persistencia, detenemos el
+servidor y lo volvemos a iniciar,
+
+87
+00:05:28,402 --> 00:05:30,612
+esta vez sin reiniciar los datos.
+
+88
+00:05:31,219 --> 00:05:34,001
+Volvemos a ingresar con el mismo perfil.
+
+89
+00:05:34,051 --> 00:05:37,753
+El saldo sigue en cinco mil
+doscientos sesenta soles:
+
+90
+00:05:37,803 --> 00:05:41,788
+el envío de cincuenta, más la
+prueba concurrente de diez.
+
+91
+00:05:42,406 --> 00:05:47,609
+Buscamos la referencia del envío de cincuenta
+soles en el historial y abrimos su
+
+92
+00:05:47,659 --> 00:05:48,331
+constancia.
+
+93
+00:05:48,381 --> 00:05:53,256
+Todo sigue disponible, porque cada operación
+confirmada se guardó en disco.
+
+94
+00:05:53,859 --> 00:05:56,957
+En la bitácora aparece el
+arranque del servicio,
+
+95
+00:05:57,007 --> 00:05:59,908
+con las operaciones
+confirmadas que encontró.
+
+96
+00:05:59,958 --> 00:06:05,154
+Esto se relaciona con la meta del PESI de RPO
+cero para operaciones confirmadas;
+
+97
+00:06:05,204 --> 00:06:08,498
+aquí lo comprobamos solo para
+este ejercicio local.
+
+98
+00:06:09,203 --> 00:06:11,491
+Este es el resumen de resultados.
+
+99
+00:06:11,541 --> 00:06:15,318
+Las diez pruebas automatizadas de
+integración pasaron,
+
+100
+00:06:15,368 --> 00:06:18,507
+junto con las verificaciones
+en el navegador.
+
+101
+00:06:18,557 --> 00:06:23,892
+Cubren integridad y duplicidad, acceso
+indebido e interrupción del servicio.
+
+102
+00:06:24,562 --> 00:06:27,434
+Las limitaciones también quedan anotadas:
+
+103
+00:06:27,484 --> 00:06:30,355
+es un entorno local, con datos ficticios,
+
+104
+00:06:30,405 --> 00:06:33,491
+y la arquitectura en Azure es una propuesta.
+
+105
+00:06:33,541 --> 00:06:39,262
+En el README encontrarás los comandos exactos
+para repetir este caso de cincuenta
+
+106
+00:06:39,312 --> 00:06:39,690
+soles.
+
+107
+00:06:39,740 --> 00:06:41,472
+Gracias por acompañarnos.

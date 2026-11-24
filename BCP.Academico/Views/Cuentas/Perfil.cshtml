@@ -1,0 +1,23 @@
+@model PerfilViewModel
+@{
+    Layout = "_BancaLayout";
+    ViewData["Title"] = "Perfil y seguridad";
+    ViewData["Menu"] = "perfil";
+}
+<div class="bank-heading"><div><span class="eyebrow">MI BANCA</span><h1 tabindex="-1">Perfil y seguridad</h1>
+    <p class="lead">Información enmascarada y registro de accesos guardado en el servidor.</p></div>
+    <form method="post" action="/acceso/salir" asp-antiforgery="true"><button type="submit" class="btn secondary">Cerrar sesión</button></form></div>
+<div class="bank-profile">
+    <section class="panel"><h2>@Iconos.Svg("user", 21) Datos del titular</h2>
+        <dl class="detail-list"><div><dt>Titular</dt><dd>@Model.Nombre</dd></div><div><dt>Identificador</dt><dd>@Model.Identificador</dd></div><div><dt>Moneda</dt><dd>Soles (PEN)</dd></div></dl></section>
+    <section class="panel"><h2>@Iconos.Svg("lock", 21) Cuenta vinculada</h2>
+        <dl class="detail-list"><div><dt>Tipo</dt><dd>@Model.Cuenta.Tipo</dd></div><div><dt>Cuenta</dt><dd>@Model.Cuenta.CuentaEnmascarada</dd></div><div><dt>CCI</dt><dd>•••• •••• •••• @Model.Cuenta.CuentaEnmascarada[^4..]</dd></div></dl></section>
+</div>
+<section class="panel bank-log access-log"><h2>Últimos accesos</h2>
+    <ul class="bank-list">
+        @foreach (var a in Model.Accesos)
+        {
+            <li>@Iconos.Svg("check", 19) <strong>Inicio de sesión</strong><time datetime="@a.ToString("o")">@Dinero.Fecha(a)</time></li>
+        }
+    </ul>
+</section>

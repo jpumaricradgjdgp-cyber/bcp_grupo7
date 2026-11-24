@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Centro de ayuda";
+    ViewData["Seccion"] = "ayuda";
+    var preguntas = new[]
+    {
+        ("¿Cómo ingreso a mi banca?", "Elige el perfil del curso (Mariana Torres o Elena Rojas) y escribe DEMO-BCP en la pantalla de acceso."),
+        ("¿Qué pasa si pulso dos veces «Confirmar envío»?", "Cada envío lleva una clave de operación. Si el servidor recibe la misma clave con los mismos datos, devuelve la referencia original y no hace un nuevo cargo."),
+        ("¿Dónde encuentro mis constancias?", "En Historial y constancias. Puedes buscar por código, destinatario o concepto, copiar la referencia e imprimirla o guardarla en PDF."),
+        ("¿Qué significa «En verificación»?", "El canal externo no confirmó ni rechazó el envío. Se mantiene el cargo y no se compensa por tiempo agotado: se espera el resultado comprobado."),
+        ("¿Qué datos debo ingresar?", "Solo datos ficticios. Ningún formulario pide claves bancarias ni datos personales reales.")
+    };
+}
+<div class="wrap interior">
+    <nav class="breadcrumbs" aria-label="Ruta de navegación"><ol><li><a href="/">Inicio</a></li><li><span aria-current="page">Centro de ayuda</span></li></ol></nav>
+    <div class="page-intro"><span class="eyebrow">AYUDA</span><h1 tabindex="-1">Centro de ayuda</h1><p class="lead">Encuentra orientación para recorrer el prototipo académico.</p></div>
+    <section class="cuy-help"><div><span class="eyebrow">GUÍA DE LA DEMO</span><h2>Preguntas frecuentes</h2>
+        @foreach (var (q, a) in preguntas)
+        {
+            <details><summary>@q</summary><p>@a</p></details>
+        }
+        </div><figure><img src="~/img/cuy-ayuda.webp" alt="Ilustración: cuy guía vestido de mago con un cuaderno y una lupa" width="1200" height="800"></figure></section>
+    <div class="info-cards"><a class="quick-card" href="/ayuda/bloquear-tarjeta"><span class="quick-icon">@Iconos.Svg("lock", 30)</span><strong>Bloquear mi tarjeta</strong><small>Administra la seguridad de tu tarjeta</small></a></div>
+    <div class="actions"><a class="btn secondary" href="/">Volver al inicio</a></div>
+</div>

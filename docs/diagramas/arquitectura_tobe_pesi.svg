@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#102747"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="#ffffff"/>
+  <rect x="1200" y="34" width="340" height="46" rx="23" fill="#ff8a24"/>
+  <text x="1370" y="64" text-anchor="middle" font-size="20" font-weight="700" fill="#102747">Propuesta To-Be del PESI</text>
+  <text x="60" y="70" font-size="40" font-weight="700" fill="#102747">Arquitectura empresarial propuesta</text>
+  <text x="60" y="108" font-size="22" fill="#4b617b">Diseño de referencia a 18 meses · no implementado en el MVP local · sujeto a diagnóstico y autorización</text>
+
+  <!-- Canales -->
+  <rect x="60" y="150" width="250" height="560" rx="22" fill="#eaf5ff" stroke="#1451a7" stroke-width="2"/>
+  <text x="185" y="190" text-anchor="middle" font-size="22" font-weight="700" fill="#102747">Canales digitales</text>
+  <rect x="85" y="220" width="200" height="86" rx="14" fill="#fff" stroke="#d3deeb"/>
+  <text x="185" y="256" text-anchor="middle" font-size="18" font-weight="650" fill="#102747">App Banca Móvil</text>
+  <text x="185" y="282" text-anchor="middle" font-size="15" fill="#4b617b">consulta y transferencia</text>
+  <rect x="85" y="322" width="200" height="86" rx="14" fill="#fff" stroke="#d3deeb"/>
+  <text x="185" y="358" text-anchor="middle" font-size="18" font-weight="650" fill="#102747">Yape</text>
+  <text x="185" y="384" text-anchor="middle" font-size="15" fill="#4b617b">P2P y pagos con QR</text>
+  <rect x="85" y="424" width="200" height="86" rx="14" fill="#fff" stroke="#d3deeb"/>
+  <text x="185" y="460" text-anchor="middle" font-size="18" font-weight="650" fill="#102747">Open Finance</text>
+  <text x="185" y="486" text-anchor="middle" font-size="15" fill="#4b617b">APIs con consentimiento</text>
+
+  <!-- Azure -->
+  <rect x="360" y="150" width="760" height="560" rx="22" fill="#f7fafd" stroke="#1451a7" stroke-width="2" stroke-dasharray="10 6"/>
+  <text x="390" y="188" font-size="22" font-weight="700" fill="#1451a7">Microsoft Azure (landing zone)</text>
+  <rect x="390" y="210" width="700" height="96" rx="16" fill="#fff" stroke="#102747" stroke-width="2"/>
+  <text x="740" y="248" text-anchor="middle" font-size="21" font-weight="700" fill="#102747">Azure API Management · fachada Strangler Fig</text>
+  <text x="740" y="278" text-anchor="middle" font-size="16" fill="#4b617b">OAuth 2.0 · rate limiting · enrutador dinámico (10 % → 50 % del tráfico) · WAF y Zero Trust</text>
+
+  <rect x="390" y="336" width="440" height="150" rx="16" fill="#fff3e6" stroke="#ff8a24" stroke-width="2"/>
+  <text x="610" y="374" text-anchor="middle" font-size="20" font-weight="700" fill="#102747">Microservicios en AKS</text>
+  <text x="610" y="402" text-anchor="middle" font-size="16" fill="#263d58">Pagos con clave de idempotencia</text>
+  <text x="610" y="426" text-anchor="middle" font-size="16" fill="#263d58">Conciliación y compensación única</text>
+  <text x="610" y="450" text-anchor="middle" font-size="15" fill="#4b617b">(.NET 8 / Go · contenedores)</text>
+
+  <rect x="860" y="336" width="230" height="150" rx="16" fill="#fff" stroke="#d3deeb"/>
+  <text x="975" y="374" text-anchor="middle" font-size="19" font-weight="700" fill="#102747">Modelo de lectura</text>
+  <text x="975" y="402" text-anchor="middle" font-size="16" fill="#263d58">CQRS</text>
+  <text x="975" y="426" text-anchor="middle" font-size="16" fill="#263d58">Azure SQL / Cosmos DB</text>
+  <text x="975" y="450" text-anchor="middle" font-size="15" fill="#4b617b">saldos y movimientos</text>
+
+  <rect x="390" y="516" width="700" height="80" rx="16" fill="#fff" stroke="#d3deeb"/>
+  <text x="740" y="550" text-anchor="middle" font-size="19" font-weight="700" fill="#102747">Seguridad, observabilidad y DevSecOps</text>
+  <text x="740" y="578" text-anchor="middle" font-size="16" fill="#4b617b">trazas por referencia · alertas · pipelines con revisión de código y secretos · FinOps</text>
+  <rect x="390" y="614" width="700" height="72" rx="16" fill="#eaf5ff" stroke="#1451a7"/>
+  <text x="740" y="646" text-anchor="middle" font-size="18" font-weight="700" fill="#102747">Continuidad: región secundaria y DRP ensayado</text>
+  <text x="740" y="672" text-anchor="middle" font-size="16" fill="#263d58">Meta del PESI: RTO ≤ 15 min · RPO 0 para operaciones confirmadas en el escenario definido</text>
+
+  <!-- On-prem -->
+  <rect x="1170" y="150" width="370" height="560" rx="22" fill="#102747"/>
+  <text x="1355" y="190" text-anchor="middle" font-size="22" font-weight="700" fill="#fff">Sistema central (on-premise)</text>
+  <rect x="1200" y="220" width="310" height="110" rx="16" fill="#1451a7"/>
+  <text x="1355" y="262" text-anchor="middle" font-size="19" font-weight="700" fill="#fff">Core Retail · mainframe</text>
+  <text x="1355" y="290" text-anchor="middle" font-size="16" fill="#c9dcf2">CICS / MQ · débitos y créditos</text>
+  <text x="1355" y="314" text-anchor="middle" font-size="16" fill="#c9dcf2">registro autorizado de fondos</text>
+  <rect x="1200" y="350" width="310" height="96" rx="16" fill="#1451a7"/>
+  <text x="1355" y="392" text-anchor="middle" font-size="19" font-weight="700" fill="#fff">DB2</text>
+  <text x="1355" y="420" text-anchor="middle" font-size="16" fill="#c9dcf2">fuente de verdad</text>
+  <rect x="1200" y="466" width="310" height="80" rx="16" fill="none" stroke="#c9dcf2" stroke-dasharray="6 5"/>
+  <text x="1355" y="500" text-anchor="middle" font-size="17" font-weight="650" fill="#fff">CDC (captura de cambios)</text>
+  <text x="1355" y="526" text-anchor="middle" font-size="15" fill="#c9dcf2">alimenta el modelo de lectura</text>
+  <text x="1355" y="600" text-anchor="middle" font-size="16" fill="#c9dcf2">ExpressRoute redundante</text>
+  <text x="1355" y="626" text-anchor="middle" font-size="16" fill="#c9dcf2">Kyndryl · Microsoft (alianza)</text>
+
+  <!-- Flechas -->
+  <path d="M285 263 L 385 258" stroke="#102747" stroke-width="3" fill="none" marker-end="url(#f)"/>
+  <path d="M285 365 L 385 280" stroke="#102747" stroke-width="3" fill="none" marker-end="url(#f)"/>
+  <path d="M285 467 L 385 295" stroke="#102747" stroke-width="3" fill="none" marker-end="url(#f)"/>
+  <path d="M610 306 L 610 331" stroke="#102747" stroke-width="3" fill="none" marker-end="url(#f)"/>
+  <path d="M975 306 L 975 331" stroke="#102747" stroke-width="3" fill="none" marker-end="url(#f)"/>
+  <text x="988" y="324" font-size="14" fill="#4b617b">lecturas</text>
+  <path d="M830 420 H845 V501 H1145 V275 H1193" stroke="#ff8a24" stroke-width="4" fill="none" stroke-linejoin="round" marker-end="url(#f)"/>
+  <text x="1100" y="264" font-size="15" font-weight="700" fill="#c25e00">escrituras</text>
+  <path d="M1200 506 C 1150 506, 1130 470, 1095 450" stroke="#c9dcf2" stroke-width="3" stroke-dasharray="8 6" fill="none" marker-end="url(#f)"/>
+
+  <rect x="60" y="740" width="1480" height="126" rx="18" fill="#fff3e6" stroke="#ff8a24"/>
+  <text x="90" y="778" font-size="21" font-weight="700" fill="#102747">Relación con el MVP local</text>
+  <text x="90" y="810" font-size="18" fill="#263d58">MVP: controlador MVC ≈ API Management · ServicioTransferencias ≈ microservicio de pagos · adaptadores BCP/Yape ≈ integración con el core · SQLite ≈ registro transaccional.</text>
+  <text x="90" y="840" font-size="18" fill="#263d58">Las lecturas no autorizan fondos: toda escritura pasa por el registro autorizado. La demo local no implementa Azure, AKS, CDC ni el mainframe.</text>
+</svg>

@@ -1,0 +1,21 @@
+@model PanelViewModel
+@{
+    Layout = "_BancaLayout";
+    ViewData["Title"] = "Posición consolidada";
+    ViewData["Menu"] = "inicio";
+}
+<div class="bank-heading"><div><span class="eyebrow">MI BANCA</span><h1 tabindex="-1">Posición consolidada</h1>
+    <p class="lead">Hola, @Model.ClienteNombre. Revisa tus cuentas y los últimos movimientos.</p></div></div>
+
+<partial name="_TarjetaSaldo" model="Model.Saldo" />
+
+<div class="bank-quick">
+    <a class="btn secondary bank-bcp" href="/banca/enviar?canal=BCP">@Iconos.Svg("loan", 23)<span>Transferir por BCP</span></a>
+    <a class="btn secondary bank-yape" href="/banca/enviar?canal=Yape">@Iconos.Svg("pos", 23)<span>Enviar por Yape</span></a>
+    <a class="btn secondary" href="/banca/historial">@Iconos.Svg("card", 23)<span>Ver constancias</span></a>
+</div>
+
+<section class="panel bank-log" aria-labelledby="ultimos">
+    <div class="bank-log-head"><h2 id="ultimos">Últimos movimientos</h2><a href="/banca/cuentas/@Model.Saldo.CuentaId">Ver movimientos de la cuenta</a></div>
+    <partial name="_ListaMovimientos" model="Model.Movimientos" />
+</section>

@@ -1,0 +1,13 @@
+@model ResumenEnvio
+<dl class="detail-list">
+    <div><dt>Monto</dt><dd data-testid="revision-monto">@Dinero.Soles(Model.ImporteCentimos)</dd></div>
+    <div><dt>Destinatario</dt><dd>@Model.Destinatario</dd></div>
+    <div><dt>Canal</dt><dd>@Model.Canal</dd></div>
+    <div><dt>@(Model.Canal == Canales.Yape ? "Celular de destino" : "Cuenta de destino")</dt><dd>@Model.DestinoEnmascarado</dd></div>
+    <div><dt>Cuenta de origen</dt><dd>@Model.OrigenEnmascarado</dd></div>
+    <div><dt>Comisión del ejercicio</dt><dd>@Dinero.Soles(Model.ComisionCentimos)</dd></div>
+    @if (!string.IsNullOrEmpty(Model.Concepto))
+    {
+        <div><dt>Concepto</dt><dd>@Model.Concepto</dd></div>
+    }
+</dl>

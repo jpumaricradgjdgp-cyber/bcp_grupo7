@@ -1,0 +1,77 @@
+@model ConstanciaViewModel
+@{
+    Layout = "_BancaLayout";
+    ViewData["Title"] = "Constancia de operación";
+    ViewData["Menu"] = "historial";
+    ViewData["Pagina"] = "constancia";
+    var yape = Model.Canal == Canales.Yape;
+    var titulo = Model.EsNuevoEnvio ? "Envío registrado" : Model.EsReintento ? "Reintento resuelto" : "Constancia de operación";
+}
+@if (Model.EsReintento)
+{
+    <partial name="_Mensajes" model="@(("Reintento detectado: el servidor reconoció la misma clave y devolvió la referencia original. No se realizó un nuevo cargo.", "exito"))" />
+}
+<article class="bank-receipt" data-testid="constancia">
+    <div class="bank-receipt-head @(yape ? "yape" : "")">
+        <span class="demo-tag">ENTORNO ACADÉMICO · GRUPO 7</span>
+        <h1 tabindex="-1">@titulo</h1>
+        <strong data-testid="constancia-monto">@Dinero.Soles(Model.ImporteCentimos)</strong>
+    </div>
+    <div class="bank-receipt-body">
+        <div class="bank-ref">
+            <div><small>Código de operación</small><strong id="ref-valor" data-testid="referencia">@Model.Referencia</strong></div>
+            <button class="btn secondary" type="button" data-copiar="@Model.Referencia">Copiar código</button>
+        </div>
+        <dl class="detail-list">
+            <div><dt>Estado</dt><dd data-testid="estado"><partial name="_EstadoOperacion" model="Model.Estado" /></dd></div>
+            <div><dt>Canal</dt><dd>@Model.Canal</dd></div>
+            <div><dt>Destinatario</dt><dd>@Model.Destinatario</dd></div>
+            <div><dt>Destino</dt><dd>@Model.DestinoEnmascarado</dd></div>
+            <div><dt>Origen</dt><dd>@Model.OrigenEnmascarado</dd></div>
+            <div><dt>Comisión</dt><dd>@Dinero.Soles(Model.ComisionCentimos)</dd></div>
+            <div><dt>Fecha</dt><dd>@Dinero.Fecha(Model.FechaUtc)</dd></div>
+            @if (!string.IsNullOrEmpty(Model.Concepto))
+            {
+                <div><dt>Concepto</dt><dd>@Model.Concepto</dd></div>
+            }
+            <div><dt>Saldo actual de tu cuenta</dt><dd data-testid="saldo-actual">@Dinero.Soles(Model.SaldoActualCentimos)</dd></div>
+        </dl>
+        <p role="status" id="bank-copy-status"></p>
+
+        <details class="asientos" open>
+            <summary>Asientos registrados para esta operación (@Model.Asientos.Count)</summary>
+            <table class="tabla" data-testid="asientos">
+                <thead><tr><th scope="col">Tipo</th><th scope="col">Cuenta</th><th scope="col">Importe</th><th scope="col">Fecha</th></tr></thead>
+                <tbody>
+                    @foreach (var a in Model.Asientos)
+                    {
+                        <tr><td>@a.Tipo</td><td>@a.Cuenta</td><td>@Dinero.SolesConSigno(a.ImporteCentimos)</td><td>@Dinero.Fecha(a.FechaUtc)</td></tr>
+                    }
+                </tbody>
+            </table>
+        </details>
+
+        <div class="actions no-print">
+            <a class="btn secondary" href="/banca/historial">Volver al historial</a>
+            <button class="btn primary" type="button" data-imprimir>Imprimir / Guardar PDF</button>
+        </div>
+        <div class="actions no-print">
+            <a href="/banca/enviar">Hacer otro envío</a>
+            <a href="/banca">Volver al saldo</a>
+        </div>
+        @if (Model.Reintento != null)
+        {
+            var r = Model.Reintento;
+            <form method="post" action="/banca/enviar/confirmar" class="reintento no-print" asp-antiforgery="true">
+                <input type="hidden" name="Canal" value="@r.Canal">
+                <input type="hidden" name="ContactoId" value="@r.ContactoId">
+                <input type="hidden" name="Importe" value="@r.Importe">
+                <input type="hidden" name="Concepto" value="@r.Concepto">
+                <input type="hidden" name="ClaveIdempotencia" value="@r.ClaveIdempotencia">
+                <input type="hidden" name="reintento" value="true">
+                <p class="hint">@Iconos.Svg("info", 16) Prueba académica: reenvía exactamente esta solicitud con la misma clave (<code>@r.ClaveIdempotencia[..8]…</code>).</p>
+                <button class="btn secondary" type="submit" data-enviando="Reintentando…" data-testid="btn-reintento">@Iconos.Svg("refresh", 19) Repetir el mismo envío</button>
+            </form>
+        }
+    </div>
+</article>
